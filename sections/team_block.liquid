@@ -1,0 +1,63 @@
+<section class="team_block">
+    <div class="container">
+        <div class="heading">{{ section.settings.heading }}</div>
+        <div class="team_block_wrap">
+            {% for block in section.blocks %}
+                <div class="main_block">
+                    <div class="team_block_img"><img src="{{ block.settings.img |  img_url: 'original' }}" alt=""></div>
+                    <div class="team_block_name">{{ block.settings.name }}</div>
+                    <div class="team_block_title">{{ block.settings.title }}</div>
+                    <div class="team_block_mail">{{ block.settings.mail }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% schema %}
+{
+    "name": "Team Block",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Add Heading"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Team",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Add Image"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Add Name"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Add Title"
+                },
+                {
+                    "type": "text",
+                    "id": "mail",
+                    "label": "Add Mail"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Team Block"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_cart_9qtp3V": {
+      "type": "custom_cart",
+      "settings": {
+        "main_title": "",
+        "page_url": "",
+        "faq_qus1": "",
+        "faq_ans1": "",
+        "faq_qus2": "",
+        "faq_ans2": "",
+        "faq_qus3": "",
+        "faq_ans3": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_cart_9qtp3V"
+  ]
+}

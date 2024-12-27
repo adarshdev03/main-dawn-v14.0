@@ -1,0 +1,121 @@
+<section class="featured_collection">
+    <div class="container">
+        <div class="featured_coll_wrap">
+            <!-- heading text -->
+            <div class="heading_text">
+                <h5>{{ section.settings.heading_txt }}</h5>
+            </div>
+            <!-- collection list -->
+            {% comment %} <div class="collection_title_wrap">
+                {% for block in section.blocks %}
+                    <div class="collection_title">
+                        <a href="#tab{{ forloop.index }}">{{ block.settings.collection_id.title }}</a>
+                    </div>
+                {% endfor %}
+            </div> {% endcomment %}
+            <!-- product list -->
+            <div class="collection_block">
+                {% for block in section.blocks %}
+                    <a href="{{ block.settings.collection_url }}">
+                        <div class="product_list">
+                            <img src="{{ block.settings.collection_img |  img_url: 'master' }}" alt="">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .collection_block{
+        display: flex;
+        align-items: center;
+    }
+    .product_list {
+        /* max-width: 300px; */
+        width: 100%;
+    }
+    .product_list img{
+    width: 100%;
+}
+</style>
+
+
+<script>
+  $(document).ready(function(){
+    $('.collection_block').slick({
+      slidesToShow: 4, // Number of slides to show at once
+      slidesToScroll: 1, // Number of slides to scroll at a time
+      infinite: true, // Infinite scrolling
+      dots: false, // Show dots for navigation
+      arrows: false, // Show arrows for navigation
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
+</script>
+
+{% comment %} <script>
+    $(function() {
+        $('.collection_title a').click(function() {
+            $('.collection_list li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            // Display active tab
+            let currentTab = $(this).attr('href');
+            $('.collection_list').hide();
+            $(currentTab).show();
+
+            return false;
+        });
+    });
+</script> {% endcomment %}
+
+{% schema %}
+{
+    "name": "Featured Block",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading_txt",
+            "label": "Heading Text"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "collection name",
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "collection_link",
+                    "label": "Collection Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "collection_img",
+                    "label": "Collection Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Block"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+<form id="newsletterForm" action="https://your-action-url.com" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+</form>
+    
+<div id="thankYouMessage" style="display:none;">
+    <p>Thank you for subscribing! Redirecting...</p>
+</div>
+
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the form from submitting immediately
+
+        // Hide the form and display the thank you message
+        document.getElementById('newsletterForm').style.display = 'none';
+        document.getElementById('thankYouMessage').style.display = 'block';
+
+        // Delay form submission or page redirection by 3 seconds
+        setTimeout(function() {
+            // Option 1: Submit the form
+            document.getElementById('newsletterForm').submit();
+
+            // Option 2: Redirect to a thank you page (instead of submitting the form)
+            // window.location.href = 'https://your-thank-you-url.com';
+        }, 3000);  // 3 seconds delay
+    });
+</script>

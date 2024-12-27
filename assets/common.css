@@ -1,0 +1,430 @@
+@font-face {
+    font-family: 'Eds Market Regular Slant';
+    src: url('EdsMarketRegularSlant.woff2') format('woff2'),
+        url('EdsMarketRegularSlant.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Trochut';
+    src: url('Trochut.woff2') format('woff2'),
+        url('Trochut.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.drawer{
+    display: none;
+}
+
+.title{
+    text-align: center;
+}
+
+.m-0{
+    margin: 0;
+}
+
+.page-width-col {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.container_md{
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+
+.pt-6{
+    padding-top: 60px;
+}
+
+.text_center{
+    text-align: center;
+}
+
+.quick-add__submit.button{
+    font-size: 13px;
+    letter-spacing: .2rem;
+    color: #efefef !important;
+    min-height: calc(4.1rem + var(--buttons-border-width) * 2) !important;
+    transition: background-size .45s cubic-bezier(.785,.135,.15,.86), background-position .45s step-end, color .45s cubic-bezier(.785,.135,.15,.86), border .45s cubic-bezier(.785,.135,.15,.86);
+}
+
+.quick-add__submit.button::before{
+    position: absolute;
+    content: "";
+    top: 0; 
+    bottom: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    transition: 0.4s ease-out;
+    z-index: 9;
+}
+
+.quick-add__submit.button span {
+    color: #ffffff;
+    z-index: 99;
+}
+
+.quick-add__submit.button:hover span{
+    color: #000000 !important;
+    transition: 0.2s 0.1s;
+}
+
+.quick-add__submit.button:hover::before{
+    width: 0%;
+}
+
+.quick-add__submit.button:hover{
+    color: #000000 !important;
+    background-color: #efefef !important;
+    border: 1px solid #000;
+}
+
+.underline-links-hover:hover a{
+    text-decoration: none !important;
+}
+
+.full-unstyled-link{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.quick-add__submit{
+    border: 1px solid;
+}
+
+.price {
+    font-size: 12px !important;
+}
+
+.price--on-sale .price-item--regular{
+    font-size: 12px !important;
+}
+
+
+.header>.header__search {
+    grid-row-start: none;
+}
+.header__icons {
+    grid-row-start: none;
+}
+
+
+
+
+
+/* Banner Button CSS */
+
+.banner__text p{
+    color: rgb(var(--color-foreground)) !important;
+}
+
+.banner__buttons .button{
+    font-size: 13px;
+    letter-spacing: .2rem;
+    min-height: calc(4.1rem + var(--buttons-border-width) * 2) !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    /* z-index: 99; */
+}
+
+.banner__buttons .button::before{
+    position: absolute;
+    content: "";
+    top: 0; 
+    bottom: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000;
+    transition: 0.4s ease-out;
+    z-index: 99;
+}
+
+.banner__buttons:hover .button{
+    color: #ffffff !important;
+    transition: 0.2s 0.1s;
+    z-index: 99;
+}
+
+.banner__buttons .button:hover::before{
+    width: 0%;
+}
+
+.banner__buttons .button::before {
+    color: #ffffff;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+/* Product Card CSS */
+
+.card__content{
+    text-align: center;
+}
+
+.card-information{
+    text-align: center !important;
+}
+
+.badge {
+    font-weight: 500;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.product-form__submit {
+    border: 1px solid #121212;
+}
+
+
+
+
+
+
+
+/* Collection Banner CSS */
+
+.banner_wrap img{
+    width: 100%;
+}
+
+
+
+
+
+
+/* Quick button On Hover */
+
+.quick-add {
+    position: absolute;
+    margin-bottom: 0;
+    bottom: 73px;
+    width: 100%;
+    display: none;
+}
+
+.grid__item:hover .quick-add {
+    display: block;
+}
+
+@media screen and (min-width: 750px) {
+    .quick-add {
+        bottom: 110px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* .sort_option{
+    padding: 10px 5px;
+} */
+
+
+.select {
+    margin: 10px 0; /* Adds space around the select box */
+}
+  
+.select select {
+    padding: 8px; /* Adjusts padding inside the select box */
+    margin: 0; /* Adjusts margin inside the select box */
+}
+
+  
+.select {
+    position: relative;
+    display: inline-block;
+}
+  
+.select select {
+    width: 100%; /* Makes the select box width 100% of its container */
+    height: 40px; /* Adjust height */
+    border: 1px solid #ccc; /* Adjust border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    appearance: none; /* Removes default styling in some browsers */
+}
+  
+.select svg {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allows clicking through the SVG */
+    fill: #333; /* Color of the caret */
+}
+
+.select2-container--default .select2-results__option {
+    padding: 8px; /* Adjusts padding inside options */
+}
+  
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #f0f0f0; /* Background color for highlighted options */
+}
+
+  
+
+
+
+
+
+
+span.facet-checkbox__text {
+    display: flex;
+    align-items: center;
+}
+
+.color_block_span{
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.Availability.color_block_span{
+    display: none;
+}
+
+.product.color_block_span{
+    display: none;
+}
+
+.Year.color_block_span{
+    display: none;
+}
+
+
+.More.color_block_span{
+    display: none;
+}
+
+
+
+
+
+/* Price Slider */
+
+
+.price-slider {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.price-slider__input {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.price-slider__values {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.price-slider__min,
+.price-slider__max {
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contact Form CSS */
+
+.contact_form{
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact_form .contact{
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Login CSS */
+
+.login_wrap {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+}
+
+.img_block{
+    max-width: 550px;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.img_block img{
+    width: 100%;
+}
+
+.customer:not(.account):not(.order) {
+    margin: initial !important;
+    text-align: left !important;
+    max-width: 550px !important;
+    width: 100%;
+}
+
+.customer.login{
+
+}

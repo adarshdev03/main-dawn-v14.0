@@ -1,0 +1,62 @@
+<div class="payment_section">
+    <div class="container">
+        <div class="payment_option">
+            {% for block in section.blocks %}
+            <div class="payment_wrap">
+                <img src="{{ block.settings.img_picker | img_url : "original" }}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .payment_section{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9;
+}
+
+.payment_section .payment_option{
+    display: flex;
+    align-items: center;
+}
+
+.payment_section .payment_option .payment_wrap{
+    padding: 0px 2px;
+}
+
+.payment_section .payment_option .payment_wrap img{
+    width: 30px;
+    height: 18px;
+}
+</style>
+
+
+{% schema %}
+    {
+      "name": "Payment Option",
+      "settings": [
+        ],
+        "blocks": [
+            {
+                "name": "image",
+                "type": "image",
+                "limit": 10,
+                "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img_picker",
+                    "label": "Payment Options"
+                }
+            ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Payment Option"
+            }
+        ]
+    }
+{% endschema %}

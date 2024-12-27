@@ -1,0 +1,147 @@
+<section class="mask_animation">
+    <svg id="demo" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="1600" height="900" viewBox="0 0 1600 900">
+        <defs>
+        <radialGradient id="maskGradient">
+        <stop offset="50%" stop-color="#fff"/>
+        <stop offset="100%" stop-color="#000"/>
+        </radialGradient>
+        <mask id="theMask">
+        <circle id="masker" r="150" fill="url(#maskGradient)" cx="800" cy="450" />
+        </mask>
+        </defs> 
+        <image id="lines" xlink:href="https://cdn.shopify.com/s/files/1/0758/8482/2850/files/Image_with_text_overlay.webp?v=1718190420" x="0" y="0" width="100%" height="900" />
+        <g id="maskReveal" mask="url(#theMask)" > 
+            <image id="regular" xlink:href="https://cdn.shopify.com/s/files/1/0758/8482/2850/files/Countdown_-_Desktop.webp?v=1717415392" x="0" y="0" width="1600" height="900" />
+        </g>
+        <circle id="ring" r="20" fill="none" stroke="#dc143c" stroke-width="2" cx="800" cy="450" />
+        <circle id="dot" r="4" fill="#dc143c" cx="800" cy="450" />
+    </svg>
+
+    {% comment %} <div id="instructions">
+        <svg id="dial" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+        <path id="progressRing" d="M50,10A40,40,0,1,1,10,50,40,40,0,0,1,50,10Z" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="6"/>
+        <circle r="43" fill="none" stroke="#fff" cx="50" cy="50" stroke-width="2" opacity="0.5" />
+        <circle r="37" fill="none" stroke="#fff" cx="50" cy="50" stroke-width="2" opacity="0.5"/>
+        <text transform="translate(55 56)" text-anchor="start" font-size="20" fill="#fff">%</text>
+        <text id="counter" transform="translate(55 56)" text-anchor="end" font-size="20" fill="#fff">0</text>
+        </svg>
+        <p>Hover mouse to move mask around.</p>
+        <p>Hold &amp; release mouse button to expand &amp; contract mask.</p>
+    </div> {% endcomment %}
+</section>
+
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin3.min.js"></script> {% endcomment %}
+<script>
+
+console.clear();
+const svg = document.querySelector("#demo");
+const tl = gsap.timeline({onUpdate:onUpdate});
+let pt = svg.createSVGPoint();
+let data = document.querySelector(".tlProgress");
+let counter = document.querySelector("#counter");
+const ratio = 0.5625;
+
+gsap.set("#instructions, #dial", {xPercent: -50});
+gsap.set("#progressRing", {drawSVG:0});
+
+tl.to("#masker", {duration: 2, attr:{r:2400}, ease:"power2.in"});
+tl.reversed(true);
+
+function mouseHandler() {
+  tl.reversed(!tl.reversed());
+}
+
+function getPoint(evt){
+  pt.x = evt.clientX; 
+  pt.y = evt.clientY;
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+function mouseMove(evt) {
+  let newPoint = getPoint(evt);
+  gsap.set("#dot", {attr:{cx:newPoint.x, cy:newPoint.y}});
+  gsap.to("#ring, #masker", 0.88, {attr:{cx:newPoint.x, cy:newPoint.y}, ease:"power2.out"});
+}
+
+function onUpdate() {
+  let prog = (tl.progress() * 100);
+  gsap.set("#progressRing", {drawSVG:prog + "%"});
+  counter.textContent = prog.toFixed();
+}
+
+function newSize() {
+  let w = window.innerWidth ;
+  let h = window.innerHeight;
+  if (w > h * (16/9) ) {
+    gsap.set("#demo", { attr: { width: w, height: w * ratio } });
+  } else {
+    gsap.set("#demo", { attr: { width: h / ratio, height: h } });
+  }
+  let data = svg.getBoundingClientRect();
+  gsap.set("#demo", {x:w/2 - data.width/2});
+  gsap.set("#demo", {y:h/2 - data.height/2});
+}
+
+window.addEventListener("mousedown", mouseHandler);
+window.addEventListener("mouseup", mouseHandler);
+window.addEventListener("mousemove", mouseMove);
+
+newSize();
+window.addEventListener("resize", newSize);
+</script>
+
+<style>
+.mask_animation{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+#demo {
+  cursor: none;
+  position: absolute;
+}
+
+#instructions {
+  position: absolute;
+  padding: 12px;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.75);
+  left: 50%;
+  cursor: none;
+  padding-top: 100px;
+  user-select: none;
+  border-radius: 4px;
+}
+
+#dial {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "Mask Animation",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img1",
+      "label": "Add First Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img2",
+      "label": "Add Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mask Animation"
+    }
+  ]
+}
+{% endschema %}

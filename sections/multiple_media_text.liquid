@@ -1,0 +1,88 @@
+<section class="multiple_media_text">
+    <div class="container container_md">
+        <div class="multiple_media_wrap {% if section.settings.layout == 'text_first' %} multiple_media_reverse{% endif %}">
+            <div class="multiple_media_content">
+                <div class="text_wrap">
+                    <p class="caption m-0">{{ section.settings.caption }}</p>
+                    <h5 class="main_title m-0">{{ section.settings.title }}</h5>
+                    <p class="main_content m-0">{{ section.settings.content }}</p>
+                    <div class="banner__buttons"><a href="{{ section.settings.btn_url }}" class="button button_main button--secondary">{{ section.settings.btn_text }}</a></div>
+                </div>
+            </div>
+            <div class="multiple_media_img">
+                {% for block in section.blocks %}
+                    <div class="image_wrap">
+                        <img src="{{ block.settings.media_img |  img_url: 'master' }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Multiple Media With Text",
+    "settings": [
+        {
+            "type": "text",
+            "id": "caption",
+            "label": "Add Caption"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Add Title"
+        },
+        {
+            "type": "textarea",
+            "id": "content",
+            "label": "Add Content"
+        },        
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Add Button Text"
+        }, 
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Add Button URL"
+        }, 
+        {
+            "type": "select",
+            "id": "layout",
+            "options": [
+                {
+                    "value": "image_first",
+                    "label": "image first"
+                },
+                {
+                    "value": "text_first",
+                    "label": "image second"
+                }
+            ],
+            "default": "image_first",
+            "label": "Desktop image placement"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Image Block",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "media_img",
+                    "label": "Add Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Multiple Media With Text"
+        }
+    ]
+}
+{% endschema %}

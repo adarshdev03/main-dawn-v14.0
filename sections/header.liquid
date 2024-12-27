@@ -1,0 +1,862 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+{% comment %} header section start {% endcomment %}
+
+
+<section class="custom_header color-{{ section.settings.color_scheme }}">
+
+  <div class="page-width">
+    <div class="header__wrapper">
+      <div class="header_menu">
+        <div class="header-inner-item">
+          <ul class="header_nav">
+            {% for link in section.settings.custom-menu.links %}
+              <li class="header_list">
+                <a class="{% if link.current %}active{% endif %} header-item-title  link--animated" href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+                {% assign val = '' %}
+                {% assign child_list_handle = '' %}
+
+                {% for block in section.blocks %}
+
+                  {%- assign val = val | append: block.settings.mega_link -%}
+                  {%- assign child_list_handle = link.title -%}
+                {% endfor %}
+
+              {% if val contains child_list_handle and section.blocks != blank %}
+                  <div class="mega-menu">
+                     <div class="menu-inner-item">
+                        {% if link.links != blank %}
+                        <div class="mega-menu__columns-wrapper">
+                           {% for child_link in link.links %}  
+                           <div class="sub-menu-list">
+                              <div class="mega-menu__title"><a href="{{ child_link.url }}">{{ child_link.title }} </a></div>
+                              {% if child_link.links != blank %}
+                              <ul class="grandchild">
+                                 {% for grandchild_link in child_link.links %}
+                                 <li class="grandchild-list">
+                                    <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                 </li>
+                                 {% endfor %}
+                              </ul>
+                              {% endif %}
+                           </div>git init
+                           {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% for block in section.blocks %}
+                           {%- assign val = block.settings.mega_link  -%}
+                                 {% if val == child_list_handle %}
+                              <div class="mega-menu__image-wrapper">
+                                    <a href="{{ block.settings.link1 }}">
+                                       <div class="img-box">
+                                          <div class="mega-menu__image">
+                                             <img src="{{ block.settings.image | img_url: '500x500' }}">
+                                          </div>
+                                          <div class="text__section">
+                                             {% unless block.settings.title == blank %}
+                                             <span>{{ block.settings.title }}</span>
+                                             {% endunless %}
+                                             {% unless block.settings.subtitle == blank %}
+                                             <p>{{ block.settings.subtitle }}</p>
+                                             {% endunless %}
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="{{ block.settings.link2 }}">
+                                       {% if block.settings.image2 != blank %}
+                                       <div class="img-box">
+                                          <div class="mega-menu__image">
+                                             <img src="{{ block.settings.image2 | img_url: '500x500' }}">
+                                          </div>
+                                          <div class="text__section">
+                                             {% unless block.settings.title2 == blank %}
+                                             <span>{{ block.settings.title2 }}</span>
+                                             {% endunless %}
+                                             {% unless block.settings.subtitle2 == blank %}
+                                             <p>{{ block.settings.subtitle2 }}</p>
+                                             {% endunless %}
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="{{ block.settings.link3 }}">
+                                       {% if block.settings.image3 != blank %}
+                                       <div class="img-box">
+                                          <div class="mega-menu__image">
+                                             <img src="{{ block.settings.image3 | img_url: '500x500' }}">
+                                          </div>
+                                          <div class="text__section">
+                                             {% unless block.settings.title3 == blank %}
+                                             <span>{{ block.settings.title3 }}</span>
+                                             {% endunless %}
+                                             {% unless block.settings.subtitle3 == blank %}
+                                             <p>{{ block.settings.subtitle3 }}</p>
+                                             {% endunless %}
+                                          </div>
+                                       </div>
+                                    </a>
+                                    {% endif %}
+                                    <a href="{{ block.settings.link4 }}">
+                                       {% if block.settings.image4 != blank %}
+                                       <div class="img-box">
+                                          <div class="mega-menu__image">
+                                             <img src="{{ block.settings.image4 | img_url: '500x500' }}">
+                                          </div>
+                                          <div class="text__section">
+                                             {% unless block.settings.title4 == blank %}
+                                             <span>{{ block.settings.title4 }}</span>
+                                             {% endunless %}
+                                             {% unless block.settings.subtitle4 == blank %}
+                                             <p>{{ block.settings.subtitle4 }}</p>
+                                             {% endunless %}
+                                          </div>
+                                       </div>
+                                    </a>
+                                    {% endif %}
+                                    {% endif %}
+                                 </div>
+                                 {% endif %} 
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% else %}
+                  {% if link.links != blank %}
+                  <div class="sub-menu">
+                     <div class="sub-menu-item">
+                        {% for child_link in link.links %}
+                        <div class="sub-menu-list-inner">
+                           <a href="{{ child_link.url }}">{{ child_link.title }} </a>
+                           {% if child_link.links != blank %}
+                           <ul class="grandchild">
+                              {% for grandchild_link in child_link.links %}
+                              <li class="grandchild-list">
+                                 <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                              </li>
+                              {% endfor %}
+                           </ul>
+                           {% endif %}
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+                  {% endif %}
+               {% endif %} 
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <!-- LOGO PART -->
+      <div class="header_logo_inner">
+        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          {%- if settings.logo != blank -%}
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+              }}
+            </div>
+          {%- else -%}
+            <span class="h2">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      <!-- SECONDARY LINKS PART -->
+      <div class="header-icon">
+        <ul class="header__linklist list--unstyled hidden-pocket hidden-lap" role="list">
+          <li class="header__linklist-item">
+            <a
+              href="#"
+              is="toggle-link"
+              class="search-btn"
+              aria-controls="search-drawer"
+              aria-expanded="false">Search</a>
+          </li>
+          <li class="header__linklist-item">
+            <a href="/account/login">Login
+            </a>
+          </li>
+          <li class="header__linklist-item">
+            <a
+              href="/cart"
+              is="toggle-link"
+              aria-controls="mini-cart"
+              aria-expanded="false"
+              data-no-instant="">
+              Cart
+              <cart-count class="header__cart-count bubble-count">{{ cart.item_count }}</cart-count>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header">
+      <div class="side-btns-wrap">
+        <div class="menu-btn">
+          <a
+            class="header-tools__item mobile-menu-btn"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#siteMap">
+            <svg
+              focusable="false"
+              width="18"
+              height="18"
+              class="icon icon--header-hamburger"
+              viewBox="0 0 18 14">
+              <path
+                d="M0 1h18M0 13h18H0zm0-6h18H0z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"></path>
+            </svg>
+          </a>
+          <a href="#" class="search-btn">
+            <svg
+              focusable="false"
+              width="18"
+              height="18"
+              class="icon icon--header-search"
+              viewBox="0 0 18 18">
+              <path
+                d="M12.336 12.336c2.634-2.635 2.682-6.859.106-9.435-2.576-2.576-6.8-2.528-9.435.106C.373 5.642.325 9.866 2.901 12.442c2.576 2.576 6.8 2.528 9.435-.106zm0 0L17 17"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="mobile_header_logo_inner">
+        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          {%- if settings.logo != blank -%}
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+              }}
+            </div>
+          {%- else -%}
+            <span class="h2">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+      <div class="right-side-btns-wrap">
+        <div class="mobile-cart-icon">
+          <a
+            href="#"
+            class="header-tools__item"
+            aria-label="mail">
+            <svg
+              focusable="false"
+              width="20"
+              height="16"
+              class="icon icon--header-email   "
+              viewBox="0 0 20 16">
+              <path
+                d="M19 4l-9 5-9-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"></path>
+              <path
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                d="M1 1h18v14H1z"></path>
+            </svg>
+          </a>
+          <a
+            href="/account/login"
+            class="header-tools__item"
+            aria-label="Login">
+            <svg
+              focusable="false"
+              width="18"
+              height="17"
+              class="icon icon--header-customer   "
+              viewBox="0 0 18 17">
+              <circle
+                cx="9"
+                cy="5"
+                r="4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"></circle>
+              <path
+                d="M1 17v0a4 4 0 014-4h8a4 4 0 014 4v0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"></path>
+            </svg>
+          </a>
+          <a href="/cart" class="header-tools__item">
+            <svg
+              focusable="false"
+              width="20"
+              height="18"
+              class="icon icon--header-cart   "
+              viewBox="0 0 20 18">
+              <path
+                d="M3 1h14l1 16H2L3 1z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"></path>
+              <path
+                d="M7 4v0a3 3 0 003 3v0a3 3 0 003-3v0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-drawer-main">
+        <div class="mobile-drawer-inner">
+          <div class="drawer-header">
+            <div class="close-btn-wrap">
+              <svg
+                focusable="false"
+                width="14"
+                height="14"
+                class="icon icon--close   "
+                viewBox="0 0 14 14">
+                <path
+                  d="M13 13L1 1M13 1L1 13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="mobile-header-menu">
+            <ul class="mobile-header-item">
+              {% for link in section.settings.custom-menu.links %}
+                <li class="mobile_header_list">
+                  <button
+                    class="{% if link.current %}active{% endif %} mobile-header-item-title"
+                    href="{{ link.url }}"
+                    aria-expanded="false">{{ link.title }}
+                    {% if link.links != blank %}
+                      <span class="animated-plus"></span>
+                    {% endif %}
+                  </button>
+                  {% assign val = '' %}
+                  {% assign child_list_handle = '' %}
+                  {% for block in section.blocks %}
+                    {%- assign val = val | append: block.settings.mega_link -%}
+                    {%- assign child_list_handle = link.title -%}
+                  {% endfor %}
+                  {% if val contains child_list_handle %}
+                    <div class="mobile-mega-menu">
+                      <div class="mobile--menu-inner-item">
+                        {% if link.links != blank %}
+                          <div class="mobile--mega-menu__columns-wrapper">
+                            {% for child_link in link.links %}
+                              <div class="mobile--sub-menu-list">
+                                <span class="mobile--mega-menu__title">
+                                  <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                                  {% if child_link.links != blank %}
+                                    <span class="animated-plus"></span>
+                                  {% endif %}
+                                </span>
+                                {% if child_link.links != blank %}
+                                  <ul class="mobile--grandchild">
+                                    {% for grandchild_link in child_link.links %}
+                                      <li class="mobile--grandchild-list">
+                                        <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                {% endif %}
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                        {% for block in section.blocks %}
+                          {%- assign val = block.settings.mega_link | handleize -%}
+                          {{ val }}
+                          {% if val == link.title  %}
+                            <div class="mobile-nav-scrollbar">
+                              <div class="mobile--mega-menu__image-wrapper">
+                             
+                                  {% unless block.settings.link == blank %}
+                                    <a href="{{ block.settings.link }}">
+                                  {% endunless %}
+                                  <div class="mobile--img-box">
+                                    <div class="mobile--mega-menu__image">
+                                      <img src="{{ block.settings.image | img_url: '500x500' }}">
+                                    </div>
+                                    <div class="mobile--text__section">
+                                      {% unless block.settings.title == blank %}
+                                        <span>{{ block.settings.title }}</span>
+                                      {% endunless %}
+                                      {% unless block.settings.subtitle == blank %}
+                                        <p>{{ block.settings.subtitle }}</p>
+                                      {% endunless %}
+                                    </div>
+                                  </div>
+                                  {% if block.settings.image2 != blank %}
+                                    <div class="mobile--img-box">
+                                      <div class="mobile--mega-menu__image">
+                                        <img src="{{ block.settings.image2 | img_url: '500x500' }}">
+                                      </div>
+                                      <div class="mobile--text__section">
+                                        {% unless block.settings.title2 == blank %}
+                                          <span>{{ block.settings.title2 }}</span>
+                                        {% endunless %}
+                                        {% unless block.settings.subtitle2 == blank %}
+                                          <p>{{ block.settings.subtitle2 }}</p>
+                                        {% endunless %}
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% if block.settings.image3 != blank %}
+                                    <div class="mobile--img-box">
+                                      <div class="mobile--mega-menu__image">
+                                        <img src="{{ block.settings.image3 | img_url: '500x500' }}">
+                                      </div>
+                                      <div class="mobile--text__section">
+                                        {% unless block.settings.title3 == blank %}
+                                          <span>{{ block.settings.title3 }}</span>
+                                        {% endunless %}
+                                        {% unless block.settings.subtitle3 == blank %}
+                                          <p>{{ block.settings.subtitle3 }}</p>
+                                        {% endunless %}
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% if block.settings.image4 != blank %}
+                                    <div class="mobile--img-box">
+                                      <div class="mobile--mega-menu__image">
+                                        <img src="{{ block.settings.image4 | img_url: '500x500' }}">
+                                      </div>
+                                      <div class="mobile--text__section">
+                                        {% unless block.settings.title4 == blank %}
+                                          <span>{{ block.settings.title4 }}</span>
+                                        {% endunless %}
+                                        {% unless block.settings.subtitle4 == blank %}
+                                          <p>{{ block.settings.subtitle4 }}</p>
+                                        {% endunless %}
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% unless block.settings.link == blank %}
+                                    </a>
+                                  {% endunless %}
+                                  
+                              </div>
+                            </div>
+
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% else %}
+                    {% if link.links != blank %}
+                      <div class="mobile--sub-menu">
+                        <div class="mobile--sub-menu-item">
+                          {% for child_link in link.links %}
+                            <div class="mobile--sub-menu-list-inner">
+                              <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                              {% if child_link.links != blank %}
+                                <ul class="mobile--grandchild">
+                                  {% for grandchild_link in child_link.links %}
+                                    <li class="mobile--grandchild-list">
+                                      <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <footer class="header-footer">
+            <div class="login-btn">
+              <div class="header-footer-row">
+                <a class="header_tools account-btn" href="/account">
+                  <svg
+                    focusable="false"
+                    width="18"
+                    height="17"
+                    class="icon icon--header-customer   "
+                    viewBox="0 0 18 17">
+                    <circle
+                      cx="9"
+                      cy="5"
+                      r="4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linejoin="round"></circle>
+                    <path
+                      d="M1 17v0a4 4 0 014-4h8a4 4 0 014 4v0"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"></path>
+                  </svg>
+                  {% if customer.name != blank %}
+                    <span>{{ customer.name }}</span>
+                  {% else %}
+                    <span>Account
+                    </span>
+                  {% endif %}
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+      </div>
+      </div>
+</section>
+
+<style>
+.sub-menu ul.grandchild {
+  position: absolute;
+  left: 149px;
+  top: 3px;
+  display: block;
+  border-top: 5px solid #56112a;
+  display: none;
+  background-color: #fff;
+}
+.sub-menu .sub-menu-list-inner:hover > ul.grandchild{
+  display: block;
+}
+
+/* .custom_header {
+  background: #ddd;
+  height: auto;
+  position: fixed !important;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+  text-align: center;
+} */
+.nav-up {
+  top: -50px;
+}
+</style>
+
+{% comment %} header section end {% endcomment %}
+
+{% schema %}
+  {
+    "name": "header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "custom-menu",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "mobile-menu",
+        "label": "Mobile menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 36,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 20
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 36,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 20
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "color",
+        "default": "scheme-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Mega Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "mega_link",
+            "label": "Menu item",
+            "default": "false"
+          },
+          {
+            "type": "header",
+            "content": "image 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image1"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link1",
+            "label": "Link"
+          }, {
+            "type": "header",
+            "content": "image 2"
+          }, {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "title2",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "subtitle2",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link2",
+            "label": "Link"
+          }, {
+            "type": "header",
+            "content": "image 3"
+          }, {
+            "type": "image_picker",
+            "id": "image3",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "title3",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "subtitle3",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link3",
+            "label": "Link"
+          }, {
+            "type": "header",
+            "content": "image 4"
+          }, {
+            "type": "image_picker",
+            "id": "image4",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "title4",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "subtitle4",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link4",
+            "label": "Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script>
+  $(document).ready(function() {
+    $('.mobile-menu-btn').on('click', function () {
+    $(".mobile-drawer-main").addClass("active");
+  });
+  
+  $('.close-btn-wrap').on('click', function () {
+    $(".mobile-drawer-main").removeClass("active");
+  });
+  
+  let menu = document.querySelectorAll(".mobile-header-item-title");
+  menu.forEach(function(element) {
+  element.addEventListener("click", function() {
+
+  // menu toggle
+  var subMenu = this.parentElement.querySelector(".mobile-mega-menu");
+  if (subMenu.classList.contains("active")) {
+    subMenu.classList.remove("active");
+  } else {
+    document.querySelectorAll(".mobile-mega-menu").forEach(function(e) {
+      e.classList.remove("active");
+    });
+    subMenu.classList.add("active");
+  }
+  
+  // arrow toggle
+  
+  if (element.classList.contains("arrow-toggle")) {
+    element.classList.remove("arrow-toggle");
+      } else {
+      menu.forEach(function(e) {
+        e.classList.remove("arrow-toggle");
+        });
+      element.classList.add("arrow-toggle");
+      }
+    });
+  });
+  
+  let menud = document.querySelectorAll(".mobile--mega-menu__title");
+  
+  menud.forEach(function(element) {
+  element.addEventListener("click", function(e) {
+  e.preventDefault();
+  
+  // menu toggle
+  var subMenu = this.parentElement.querySelector(".mobile--grandchild");
+  if (subMenu.classList.contains("active")) {
+    subMenu.classList.remove("active");
+    element.classList.remove("active");
+  } else {
+    document.querySelectorAll(".mobile--grandchild").forEach(function(menu) {
+  menu.classList.remove("active");
+    });
+    subMenu.classList.add("active");
+  }
+  
+  var subMenu = this.parentElement.querySelector(".mobile-mega-menu");
+  if (subMenu.classList.contains("active")) {
+    subMenu.classList.remove("active");
+    } else {
+      document.querySelectorAll(".mobile-mega-menu").forEach(function(e) {
+    e.classList.remove("active");
+      });
+      subMenu.classList.add("active");
+    }
+    // arrow toggle
+    if (element.classList.contains("arrow-toggle")) {
+      element.classList.remove("arrow-toggle");
+      } else {
+        menu.forEach(function(e) {
+        e.classList.remove("arrow-toggle");
+        });
+        element.classList.add("arrow-toggle");
+      }
+    });
+  });
+  
+  let small = document.querySelectorAll(".mobile-header-item-title");
+  
+  small.forEach(function(element) {
+    element.addEventListener("click", function(e) {
+      e.preventDefault();
+      // menu toggle
+      var subMenu = this.parentElement.querySelector(".mobile--sub-menu");
+      if (subMenu.classList.contains("active")) {
+          subMenu.classList.remove("active");
+          element.classList.remove("active");
+      } else {
+          document.querySelectorAll(".mobile--sub-menu").forEach(function(menu) {
+      menu.classList.remove("active");
+          });
+          subMenu.classList.add("active");
+          
+      }
+      // arrow toggle
+      
+      if (element.classList.contains("arrow-toggle")) {
+        element.classList.remove("arrow-toggle");
+        } else {
+          menu.forEach(function(e) {
+          e.classList.remove("arrow-toggle");
+          });
+          element.classList.add("arrow-toggle");
+        }
+      });
+    });
+  });
+
+
+  // Fixed Header
+
+  var didScroll;
+  var lastScrollTop = 0;
+  var delta = 5;
+  var navbarHeight = $('custom_header').outerHeight();
+
+  $(window).scroll(function(event){
+    didScroll = true;
+  });
+
+  setInterval(function() {
+    if (didScroll) {
+      hasScrolled();
+      didScroll = false;
+    }
+  }, 250);
+
+  function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+      return;
+    
+    // If scrolled down and past the navbar, add class .nav-up.
+    if (st > lastScrollTop && st > navbarHeight){
+      // Scroll Down
+      $('custom_header').removeClass('nav-down').addClass('nav-up');
+    } else {
+      // Scroll Up
+      if(st + $(window).height() < $(document).height()) {
+        $('custom_header').removeClass('nav-up').addClass('nav-down');
+      }
+    }
+    lastScrollTop = st;
+  }
+
+</script>

@@ -1,0 +1,96 @@
+<div class="header_bar">
+    <div class="menu_icon">{% render 'icon-plus' %}</div>
+    <div class="icon">{% render 'icon-minus' %}</div>
+</div>
+<section class="collection_grid">
+    <div class="container page-width-col">
+        <div class="collection_grid_wrap">
+            <div class="grid_left grid_main">
+                <div class="grid_left_main collection_text">
+                    <img src="{{ section.settings.grid_img_left |  img_url: "master" }}" alt="">
+                    <a href="{{ section.settings.collection_url }}" class="grid_left_text">{{ section.settings.collection_name }}</a>
+                </div>
+            </div>
+            <div class="grid_right grid_main media-grid">
+                {% for block in section.blocks %}                    
+                    <div class="grid_right_wrap collection_text">
+                        <img src="{{ block.settings.grid_img_right |  img_url: "master" }}" alt="">
+                        <a href="{{ block.settings.collection_right_url }}" class="grid_left_text">{{ block.settings.collection_right_name }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .header_bar{
+        padding: 17px 70px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #4143f5;
+        display: none;
+    }
+    .header_bar .menu_icon{
+        width: 20px;
+        height: 20px;
+    }
+    .header_bar .icon{
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
+
+{% schema %}
+{
+    "name": "Collection Grid",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "grid_img_left",
+            "label": "Grid Image"
+        },
+        {
+            "type": "text",
+            "id": "collection_name",
+            "label": "Collection Name"
+        },
+        {
+            "type": "url",
+            "id": "collection_url",
+            "label": "Collection URL"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Image Block",
+            "type": "Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "grid_img_right",
+                    "label": "Grid Image"
+                },
+                {
+                    "type": "text",
+                    "id": "collection_right_name",
+                    "label": "Collection Name"
+                },
+                {
+                    "type": "url",
+                    "id": "collection_right_url",
+                    "label": "Collection URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection Grid"
+        }
+    ]
+}
+{% endschema %}

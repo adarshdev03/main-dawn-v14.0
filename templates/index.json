@@ -1,0 +1,922 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "ELEGANT & TIMELESS",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Nove_desk.png",
+        "mob_image": "shopify:\/\/shop_images\/Nova_mob.png",
+        "image_overlay_opacity": 20,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Trading products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "hand-bags",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_EmaDkL": {
+      "type": "image-banner",
+      "blocks": {
+        "text_wnXEVa": {
+          "type": "text",
+          "settings": {
+            "text": "NEW PRODUCT",
+            "text_style": "body"
+          }
+        },
+        "heading_dE7RkE": {
+          "type": "heading",
+          "settings": {
+            "heading": "LE BACKPACK",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_k8N4Mr": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_wnXEVa",
+        "heading_dE7RkE",
+        "buttons_k8N4Mr"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Desktop_-_home.webp",
+        "mob_image": "shopify:\/\/shop_images\/Group_133.png",
+        "image_overlay_opacity": 30,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "collection_grid_KRbfjh": {
+      "type": "collection_grid",
+      "blocks": {
+        "image_MkwBKJ": {
+          "type": "Image",
+          "settings": {
+            "grid_img_right": "shopify:\/\/shop_images\/Media_grid_-_men_collection.webp",
+            "collection_right_name": "Men",
+            "collection_right_url": "shopify:\/\/collections\/hand-bags"
+          }
+        },
+        "image_UCRCxB": {
+          "type": "Image",
+          "settings": {
+            "grid_img_right": "shopify:\/\/shop_images\/Media_grid_-_accessories.webp",
+            "collection_right_name": "Accessories",
+            "collection_right_url": "shopify:\/\/collections\/hand-bags"
+          }
+        }
+      },
+      "block_order": [
+        "image_MkwBKJ",
+        "image_UCRCxB"
+      ],
+      "settings": {
+        "grid_img_left": "shopify:\/\/shop_images\/Media_grid_-_women_collection.webp",
+        "collection_name": "Women",
+        "collection_url": "shopify:\/\/collections\/hand-bags"
+      }
+    },
+    "marque_text_UMAgWT": {
+      "type": "marque_text",
+      "blocks": {
+        "text_jKQzBB": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-sac-elegant-brown-patent-leather",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_XXMn7A": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-sac-elegant-brown-patent-leather",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_YFPAJY": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/collections\/hand-bags",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_DwFXKq": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_DgKdDP": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_4Eb6EX": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-compact-weekender-buffalo-brown",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_YjWqkB": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-sac-elegant-brown-patent-leather",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        },
+        "text_J3rzDF": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_sac._-baguette.webp",
+            "marque_url": "shopify:\/\/products\/le-sac-elegant-brown-patent-leather",
+            "marque_text": "New: Le Sac Baguette"
+          }
+        }
+      },
+      "block_order": [
+        "text_jKQzBB",
+        "text_XXMn7A",
+        "text_YFPAJY",
+        "text_DwFXKq",
+        "text_DgKdDP",
+        "text_4Eb6EX",
+        "text_YjWqkB",
+        "text_J3rzDF"
+      ],
+      "settings": {
+        "marque_text": "left"
+      }
+    },
+    "marque_text_KYPUhw": {
+      "type": "marque_text",
+      "blocks": {
+        "text_rzK3xG": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "marque_text": "Shop new arrivals"
+          }
+        },
+        "text_9y9rhW": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "marque_text": "Shop new arrivals"
+          }
+        },
+        "text_kF9jn8": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/products\/le-compact-weekender-blue-pebbled-leather",
+            "marque_text": "Shop new arrivals"
+          }
+        },
+        "text_gmj3kc": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/products\/le-compact-weekender-buffalo-black",
+            "marque_text": "Shop new arrivals"
+          }
+        },
+        "text_QV7ATD": {
+          "type": "text",
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/collections\/hand-bags",
+            "marque_text": "Shop new arrivals"
+          }
+        },
+        "text_JycGXm": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "marque_img": "shopify:\/\/shop_images\/Scrolling_content_-_home_-_new.webp",
+            "marque_url": "shopify:\/\/products\/le-compact-weekender-buffalo-brown",
+            "marque_text": "Shop new arrivals"
+          }
+        }
+      },
+      "block_order": [
+        "text_rzK3xG",
+        "text_9y9rhW",
+        "text_kF9jn8",
+        "text_gmj3kc",
+        "text_QV7ATD",
+        "text_JycGXm"
+      ],
+      "settings": {
+        "marque_text": "right"
+      }
+    },
+    "featured_collection_BWYpNQ": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Weekender bag",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "weekend-bag",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "video_section_QwGxJM": {
+      "type": "video_section",
+      "settings": {
+        "video_id": "shopify:\/\/files\/videos\/a9ea64c362124ba0b6ffc37ea30bc5c8.HD-1080p-4.8Mbps-13664080.mp4",
+        "video_desc": "Made in Italy",
+        "video_title": "Finest handmade",
+        "video_url": "shopify:\/\/products\/le-compact-weekender-buffalo-brown",
+        "video_btn": "Shop Now"
+      }
+    },
+    "image_hotspot_Q37eaT": {
+      "type": "image_hotspot",
+      "blocks": {
+        "dota_iGK3bY": {
+          "type": "dota",
+          "settings": {
+            "product_dots": "le-dalia-ivory-liege",
+            "dot_left": 21,
+            "dot_top": 28
+          }
+        },
+        "dota_EAr6gn": {
+          "type": "dota",
+          "settings": {
+            "product_dots": "le-gina-petrol-liege",
+            "dot_left": 70,
+            "dot_top": 45
+          }
+        },
+        "dota_f3qc4B": {
+          "type": "dota",
+          "settings": {
+            "product_dots": "le-compact-weekender-buffalo-brown",
+            "dot_left": 60,
+            "dot_top": 54
+          }
+        }
+      },
+      "block_order": [
+        "dota_iGK3bY",
+        "dota_EAr6gn",
+        "dota_f3qc4B"
+      ],
+      "settings": {
+        "product_img": "shopify:\/\/shop_images\/Shop_the_look_-_mini_primo.jpg"
+      }
+    },
+    "image_banner_cxtx9e": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_AUe8gF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Super Sale Up to 40% off",
+            "heading_size": "h1"
+          }
+        },
+        "text_N9hfYD": {
+          "type": "text",
+          "settings": {
+            "text": "Shop our selection of exclusive handbags and backpacks at reduced price during the Super Sale. Hurry up!",
+            "text_style": "body"
+          }
+        },
+        "buttons_Wfijt4": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify:\/\/products\/le-mini-dalia-black-liege",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_AUe8gF",
+        "text_N9hfYD",
+        "buttons_Wfijt4"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Countdown_-_Desktop.webp",
+        "mob_image": "shopify:\/\/shop_images\/Group_134.png",
+        "image_overlay_opacity": 20,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "multiple_media_text_eCc6RU": {
+      "type": "multiple_media_text",
+      "blocks": {
+        "image_LCcH3V": {
+          "type": "image",
+          "settings": {
+            "media_img": "shopify:\/\/shop_images\/Multiple_media_with_text_2.webp"
+          }
+        },
+        "image_n8anFw": {
+          "type": "image",
+          "settings": {
+            "media_img": "shopify:\/\/shop_images\/Multiple_media_with_text.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_LCcH3V",
+        "image_n8anFw"
+      ],
+      "settings": {
+        "caption": "COLLABORATION",
+        "title": "LÉO ET VIOLETTE X WENDY SWAN",
+        "content": "Dalia was born from the encounter between Wendy and Léo et Violette. Wendy's minimalist and elegant universe corresponds perfectly to the spirit of Léo et Violette.",
+        "btn_text": "Discover",
+        "btn_url": "shopify:\/\/products\/le-dalia-ivory-liege",
+        "layout": "text_first"
+      }
+    },
+    "image_slider_E6iTax": {
+      "type": "image_slider",
+      "settings": {
+        "caption": "LE DALIA",
+        "title": "CHOOSE YOUR COLOUR",
+        "first_img": "shopify:\/\/shop_images\/After_-_Desktop.webp",
+        "second_img": "shopify:\/\/shop_images\/Before_-_Desktop.webp"
+      }
+    },
+    "image_text_scroll_H3aaTh": {
+      "type": "image_text_scroll",
+      "blocks": {
+        "image_ztWn86": {
+          "type": "Image",
+          "settings": {
+            "img_main": "shopify:\/\/shop_images\/Images_with_text_scroll_1.webp",
+            "index_num": 1,
+            "title": "THE DESIGN",
+            "discription": "At Léo et Violette, we create our bags with you in mind. All our products are imagined and designed in Paris, in our offices on rue Sainte-Anne. Most of the time, an idea for a model comes from a need that you have expressed to us through the various feedbacks we collect throughout the year.",
+            "links": "shopify:\/\/products\/le-compact-weekender-black-pebbled-leather",
+            "lable": "Learn more"
+          }
+        },
+        "image_arWmWB": {
+          "type": "Image",
+          "settings": {
+            "img_main": "shopify:\/\/shop_images\/Images_with_text_scroll_2.webp",
+            "index_num": 2,
+            "title": "OUR COMMITMENTS",
+            "discription": "At Léo et Violette, from day one we have made responsibility part of our values. Towards you, and also towards the environment through the way we produce our collections. From design to distribution, we take the greatest care with our products, which reflect our values: timeless, quality, at the right price.",
+            "links": "shopify:\/\/products\/le-compact-weekender-buffalo-brown",
+            "lable": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "image_ztWn86",
+        "image_arWmWB"
+      ],
+      "settings": {
+        "img_main": "shopify:\/\/shop_images\/Images_with_text_scroll.webp"
+      }
+    },
+    "featured_blog_jXaLRm": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "FROM THE BLOG",
+        "heading_size": "h2",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_NkDgLt": {
+      "type": "featured-product",
+      "blocks": {
+        "text_M6Nb9K": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_inKiDX": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_etgDAm": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_bhrRtq": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_C6gMkt": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_g7HPaA": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_MApTiA": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_M6Nb9K",
+        "title_inKiDX",
+        "price_etgDAm",
+        "variant_picker_bhrRtq",
+        "quantity_selector_C6gMkt",
+        "buy_buttons_g7HPaA",
+        "share_MApTiA"
+      ],
+      "settings": {
+        "product": "le-dalia-ivory-liege",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_LLKHfr": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_6ETnKN": {
+          "type": "heading",
+          "settings": {
+            "heading": "MATERIALS",
+            "heading_size": "h2"
+          }
+        },
+        "text_hh7rE7": {
+          "type": "text",
+          "settings": {
+            "text": "We only work with the best leather, chosen in collaboration with our factory. Made in Italy.",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
+        "buttons_FFT7Yb": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Learn more",
+            "button_link_1": "shopify:\/\/products\/le-compact-weekender-buffalo-brown",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_6ETnKN",
+        "text_hh7rE7",
+        "buttons_FFT7Yb"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Image_with_text_overlay.webp",
+        "mob_image": "shopify:\/\/shop_images\/Group_135.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
+    "brand_slider_BWCAxb": {
+      "type": "brand-slider",
+      "blocks": {
+        "text_qqPLQV": {
+          "type": "text",
+          "settings": {
+            "slider_text": "The GQ choice: \"black or green, with its leather both flexible and rigid, small Binder protects your equipment in dedicated compartments\"",
+            "slider_logo": "shopify:\/\/shop_images\/GQ.png"
+          }
+        },
+        "text_ebtziq": {
+          "type": "text",
+          "settings": {
+            "slider_text": "Le Petit Violette redefined women elegancy. Its high quality leather and convenient interior make it perfect for an everyday usage!",
+            "slider_logo": "shopify:\/\/shop_images\/farfetch.png"
+          }
+        },
+        "text_yxHMLQ": {
+          "type": "text",
+          "settings": {
+            "slider_text": "Le Nouveau Cartable is perfectly sized, even holds my water bottle. And the leather just looks super rich and luxurious. Most awesome product I've tested!",
+            "slider_logo": "shopify:\/\/shop_images\/forbes.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_qqPLQV",
+        "text_ebtziq",
+        "text_yxHMLQ"
+      ],
+      "settings": {}
+    },
+    "mask_animation_mB44yF": {
+      "type": "mask_animation",
+      "disabled": true,
+      "settings": {
+        "img1": "shopify:\/\/shop_images\/Image_with_text_overlay.webp",
+        "img2": "shopify:\/\/shop_images\/Nove_desk.png"
+      }
+    },
+    "image_with_text_FJ98nf": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_qMy93M": {
+          "type": "caption",
+          "settings": {
+            "caption": "FIRST COLLABORATION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_EbeXLB": {
+          "type": "heading",
+          "settings": {
+            "heading": "LÉO ET VIOLETTE X WENDY SWAN",
+            "heading_size": "h1"
+          }
+        },
+        "text_kXcMHG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The meeting between Wendy and Léo et Violette gave birth to our new bag: The Dalia. Every detail, from the choice of leather quality to the metal parts, has been carefully thought out.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_hPL7cn": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_qMy93M",
+        "heading_EbeXLB",
+        "text_kXcMHG",
+        "button_hPL7cn"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Timeline_-_Desktop.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "bottom",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_39a7Vj": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gbcWFn": {
+          "type": "heading",
+          "settings": {
+            "heading": "LÉO ET VIOLETTE",
+            "heading_size": "h2"
+          }
+        },
+        "text_9rNtbc": {
+          "type": "text",
+          "settings": {
+            "text": "We aspire to be a brand of the 21st century: 100% online and without any intermediary.From you to us directly.",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
+        "buttons_FCHg9e": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_gbcWFn",
+        "text_9rNtbc",
+        "buttons_FCHg9e"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Image_with_text_block_-_Desktop_-_the_dino.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "newsletter_3KFn4d": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_twwNnA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_XRCcgD": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "email_form_jCaHVF": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_twwNnA",
+        "paragraph_XRCcgD",
+        "email_form_jCaHVF"
+      ],
+      "settings": {
+        "bg_main": "shopify:\/\/shop_images\/bg_image.webp",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "team_block_Twna4L": {
+      "type": "team_block",
+      "blocks": {
+        "image_wXUywR": {
+          "type": "image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/michael-dam-mEZ3PoFGs_k-unsplash.png",
+            "name": "Jane Doe",
+            "title": "Founder & Owner",
+            "mail": "Jane@vanlifeni.co.uk"
+          }
+        },
+        "image_8RP6p8": {
+          "type": "image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/arthur-savary-nLfAqmZ2hJo-unsplash.png",
+            "name": "Jane Doe",
+            "title": "Founder & Owner",
+            "mail": "Jane@vanlifeni.co.uk"
+          }
+        },
+        "image_EAEtYM": {
+          "type": "image",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/daoudi-aissa-hNG1tdCjZWo-unsplash.png",
+            "name": "Jane Doe",
+            "title": "Founder & Owner",
+            "mail": "Jane@vanlifeni.co.uk"
+          }
+        }
+      },
+      "block_order": [
+        "image_wXUywR",
+        "image_8RP6p8",
+        "image_EAEtYM"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "hero_banner_bPHyPQ": {
+      "type": "hero_banner",
+      "blocks": {
+        "hero_slide_PGfrqA": {
+          "type": "hero-Slide",
+          "settings": {
+            "slider_url": "",
+            "hero_img_xs": "shopify:\/\/shop_images\/Nove_desk.png",
+            "hero_img_sm": "shopify:\/\/shop_images\/Nova_mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "hero_slide_PGfrqA"
+      ],
+      "settings": {}
+    },
+    "video_rotate_AyFHpE": {
+      "type": "video_rotate",
+      "settings": {
+        "heading": "Video",
+        "image": "shopify:\/\/shop_images\/halloween_banner.webp",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video": "shopify:\/\/files\/videos\/a9ea64c362124ba0b6ffc37ea30bc5c8.HD-1080p-4.8Mbps-13664080.mp4",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "tab_section_YhWq43": {
+      "type": "tab_section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "image_banner_EmaDkL",
+    "collection_grid_KRbfjh",
+    "marque_text_UMAgWT",
+    "marque_text_KYPUhw",
+    "featured_collection_BWYpNQ",
+    "video_section_QwGxJM",
+    "image_hotspot_Q37eaT",
+    "image_banner_cxtx9e",
+    "multiple_media_text_eCc6RU",
+    "image_slider_E6iTax",
+    "image_text_scroll_H3aaTh",
+    "featured_blog_jXaLRm",
+    "featured_product_NkDgLt",
+    "image_banner_LLKHfr",
+    "brand_slider_BWCAxb",
+    "mask_animation_mB44yF",
+    "image_with_text_FJ98nf",
+    "image_banner_39a7Vj",
+    "newsletter_3KFn4d",
+    "team_block_Twna4L",
+    "hero_banner_bPHyPQ",
+    "video_rotate_AyFHpE",
+    "tab_section_YhWq43"
+  ]
+}

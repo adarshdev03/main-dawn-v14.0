@@ -1,0 +1,111 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": true,
+        "enable_language_selector": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "logo_image_xHJgxa": {
+          "type": "logo_image",
+          "settings": {
+            "mega_link": "Home",
+            "image": "shopify:\/\/shop_images\/michael-dam-mEZ3PoFGs_k-unsplash.png",
+            "title": "",
+            "subtitle": "",
+            "link1": "",
+            "title2": "",
+            "subtitle2": "",
+            "link2": "",
+            "title3": "",
+            "subtitle3": "",
+            "link3": "",
+            "title4": "",
+            "subtitle4": "",
+            "link4": ""
+          }
+        },
+        "logo_image_cyQbBA": {
+          "type": "logo_image",
+          "settings": {
+            "mega_link": "Shop",
+            "image": "shopify:\/\/shop_images\/daoudi-aissa-hNG1tdCjZWo-unsplash.png",
+            "title": "",
+            "subtitle": "",
+            "link1": "",
+            "image2": "shopify:\/\/shop_images\/arthur-savary-nLfAqmZ2hJo-unsplash.png",
+            "title2": "",
+            "subtitle2": "",
+            "link2": "",
+            "image3": "shopify:\/\/shop_images\/michael-dam-mEZ3PoFGs_k-unsplash.png",
+            "title3": "",
+            "subtitle3": "",
+            "link3": "",
+            "title4": "",
+            "subtitle4": "",
+            "link4": ""
+          }
+        },
+        "logo_image_pmVFqA": {
+          "type": "logo_image",
+          "settings": {
+            "mega_link": "About",
+            "image": "shopify:\/\/shop_images\/daoudi-aissa-hNG1tdCjZWo-unsplash.png",
+            "title": "",
+            "subtitle": "",
+            "link1": "",
+            "title2": "",
+            "subtitle2": "",
+            "link2": "",
+            "title3": "",
+            "subtitle3": "",
+            "link3": "",
+            "title4": "",
+            "subtitle4": "",
+            "link4": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_xHJgxa",
+        "logo_image_cyQbBA",
+        "logo_image_pmVFqA"
+      ],
+      "custom_css": [],
+      "settings": {
+        "custom-menu": "header",
+        "mobile-menu": "header",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

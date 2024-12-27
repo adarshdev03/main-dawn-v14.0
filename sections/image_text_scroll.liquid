@@ -1,0 +1,399 @@
+<section class="image_text_scroll">
+    <div class="container">
+        <div class="image_scroll_wrap">
+            {% comment %} {% if section.settings.img_main != blank %}
+                <div class="image_main">
+                    <img src="{{ section.settings.img_main |  img_url: 'original' }}" alt="">
+                </div>
+            {% endif %} {% endcomment %}
+            <div class="text_main" style="background-image: url({{ section.settings.img_main |  img_url: 'original' }});">
+                <div class="locker">
+                    <div class="locker__image">
+                        <div class="locker__container">
+                            {% for block in section.blocks %}
+                                <img class="image image--{{ forloop.index }}" src="{{ block.settings.img_main |  img_url: 'original' }}">
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="locker__content">
+                        {% for block in section.blocks %}
+                            <div class="locker__section locker__section--{{ forloop.index }} cb" data-swap="image--{{ forloop.index }}">
+                                <h3 class="m-0">#{{ block.settings.index_num }}</h3>
+                                <h5 class="m-0">{{ block.settings.title }}</h5>
+                                <p class="m-0">{{ block.settings.discription }}</p>
+                                <a href="{{ block.settings.links }}">{{ block.settings.lable }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="threshold threshold--top"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+.locker {
+    position: relative; /* Allows for absolute positioning of child elements */
+    background-image: url({{ section.settings.img_main |  img_url: 'original' }}); /* Your background image URL */
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-position: center center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Fixes the background image in place */
+    padding: 20px; /* Adjust padding if needed */
+    color: white; /* Ensure text is visible over the background */
+}
+
+.locker__image, .locker__content, .threshold {
+    position: relative; /* Ensure these elements are positioned relative to .locker */
+    z-index: 2; /* Place these elements above the background image */
+}
+
+/* Optional: Add an overlay to darken the background for better readability */
+.locker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent black overlay */
+    z-index: 1; /* Place the overlay between the background image and the content */
+}
+
+.threshold {
+  position: sticky;
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  z-index: 9999999999;
+}
+
+.threshold--top {
+  top: 50%;
+}
+
+p, h1, h3 {
+  font-family: sans-serif;
+  line-height: 1.8;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+.text {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.text p {
+  width: 40%;
+}
+
+.image {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.image_main img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    max-height: 100vh;
+    position: sticky;
+    inset-block-start: 0;
+}
+
+.image.active {
+  opacity: 1;
+}
+
+.locker {
+  /* outline: 1px solid #cdcdcd; */
+  outline-offset: -1px;
+  position: relative;
+  display: grid;
+  grid-template-columns: [full-start] minmax(4.2rem, 1fr) [center-start] repeat(12, [col-start] minmax(min-content, 8rem) [col-end]) [center-end] minmax(4.2rem, 1fr) [full-end];
+}
+.locker__image {
+  position: relative;
+  grid-column: col-start 1 / col-end 5;
+}
+.locker__image img {
+  width: auto;
+  height: 60vh;
+  position: absolute;
+  transition: all 1s ease;
+}
+.locker__container {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.locker__content {
+    text-align: center;
+  grid-column: col-start 8/center-end;
+}
+.locker__section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* border-top: 1px solid #cdcdcd; */
+}
+.locker__section:first-child {
+  border: none;
+}
+.locker__section p {
+  width: 70%;
+}
+
+#message {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  height: auto;
+  padding: 10px 20px;
+  z-index: 900;
+}/*# sourceMappingURL=style.css.map */
+
+.locker__section h3{
+    font-size: 12px;
+    line-height: 1.7;
+    font-family: "Univers Next", sans-serif;
+    color: #ffffff;
+}
+
+.locker__section h5{
+    font-size: 21px;
+    line-height: 1.7;
+    font-family: "Univers Next", sans-serif;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.locker__section p{
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: "Univers Next", sans-serif;
+    color: #ffffff;
+    margin-top: 20px;
+    max-width: 375px;
+    width: 100%;
+}
+
+.locker__section a{
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: "Univers Next", sans-serif;
+    color: #ffffff;
+    margin-top: 20px ;
+}
+
+/* Base styles are already set, now we'll add responsive adjustments */
+
+/* Large screens (desktops and larger tablets) */
+@media (min-width: 992px) {
+    /* No additional styles needed, use base styles */
+}
+
+/* Medium screens (smaller tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .locker {
+        grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(12, [col-start] minmax(min-content, 6rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
+    }
+
+    .locker__image {
+        grid-column: col-start 1 / col-end 5;
+    }
+
+    .locker__content {
+        grid-column: col-start 7 / center-end 12;
+    }
+}
+
+/* Small screens (phones and small tablets) */
+@media (max-width: 767px) {
+    .locker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .locker__image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .locker__image img {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: 60vh;
+    }
+
+    .locker__container {
+        position: relative;
+        height: auto;
+        top: auto;
+        display: block;
+    }
+
+    .locker__content {
+        grid-column: auto;
+        text-align: center;
+    }
+
+    .locker__section {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .locker__section p {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Optional: Adjust overlay for better readability on small screens */
+    .locker::before {
+        background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for mobile */
+    }
+
+    .threshold--top {
+        top: auto;
+        bottom: 10px; /* Position the threshold at the bottom */
+    }
+}
+
+/* Extra small screens (very small phones) */
+@media (max-width: 480px) {
+    .locker {
+        padding: 5px;
+    }
+
+    .locker__section p {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .locker__section h3,
+    .locker__section h5,
+    .locker__section p,
+    .locker__section a {
+        font-size: 12px;
+    }
+}
+
+
+
+</style>
+
+
+<script>
+    if(typeof window.IntersectionObserver !== 'undefined') {
+    let options = {
+      threshold: [0.5, 1]
+    }
+    const targets = document.querySelectorAll('.cb');
+    const locker = document.querySelector('.locker__container');
+    function handleIntersection(entries) {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.current = entry.target.dataset.swap;
+          document.querySelector(".locker__container ." + entry.target.current).classList.add("active");
+        } else {
+          document.querySelector(".locker__container ." + entry.target.current).classList.remove("active");
+        }
+      });
+    }
+    const observer = new IntersectionObserver(handleIntersection, options);
+    targets.forEach(target => observer.observe(target));
+  } else {
+    // Fallback
+  }
+</script>
+
+
+
+{% schema %}
+{
+    "name": "Image With Text Scroll",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "img_main",
+            "label": "Add Main Image"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img_main",
+                    "label": "Add Slider Image"
+                },
+                {
+                    "type": "number",
+                    "id": "index_num",
+                    "label": "Add Slider Index"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Add Slider Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "discription",
+                    "label": "Add Slider Discription"
+                },
+                {
+                    "type": "url",
+                    "id": "links",
+                    "label": "Add Slider Link URL"
+                },
+                {
+                    "type": "text",
+                    "id": "lable",
+                    "label": "Add Slider Link Lable"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image With Text Scroll"
+        }
+    ]
+}
+{% endschema %}

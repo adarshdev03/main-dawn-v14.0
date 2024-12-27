@@ -1,0 +1,76 @@
+<section class="brand_slider">
+    <div class="container page-width-desktop">
+        <div class="main_brand_slider">
+            <div class="top_slide">
+                {% for block in section.blocks %}
+                    <div class="slider_block">
+                        <h5 class="m-0">{{ block.settings.slider_text }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="logo_slider">
+                {% for block in section.blocks %}
+                    <div class="slider_logo_block">
+                        <img src="{{ block.settings.slider_logo |  img_url: 'Original' }}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('.top_slide').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            dots: false,
+            asNavFor: '.logo_slider',
+        });
+        $('.logo_slider').slick({
+            slidesToShow: 3,
+            arrows: false,
+            asNavFor: '.top_slide',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true,
+        });
+    });
+</script>
+
+
+
+{% schema %}
+{
+    "name": "Brand Slider",
+    "settings": [
+    ],
+    "blocks": [
+        {
+            "name": "Brand Content",
+            "type": "text",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "slider_text",
+                    "label": "Add Slider Text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "slider_logo",
+                    "label": "Add Slider Logo"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Brand Slider"
+        }
+    ]
+}
+{% endschema %}

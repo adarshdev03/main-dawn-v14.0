@@ -1,0 +1,420 @@
+<div class="video-flip-section">
+  <div class="flip-container">
+    <!-- Video Side (Front) -->
+    <div class="flip-content video-side">
+      <div class="desk_video">
+        {% if section.settings.video_url != blank %}
+        {{ section.settings.video_url | video_tag:
+        image_size: '1100x',
+        class: "video_main",
+        autoplay: true,
+        controls: none,
+        muted: true,
+        loop:true }}
+        {% endif %}
+      </div>
+      <div class="mob_video">
+        {% if section.settings.video_mob_url != blank %}
+        {{ section.settings.video_mob_url | video_tag:
+        image_size: '1100x',
+        class: "video_main",
+        autoplay: true,
+        controls: none,
+        muted: true,
+        loop:true }}
+        {% endif %}
+      
+      </div>
+      {% comment %} <div class="scroll-more">
+        <a href="#" id="scroll-more-link">Scroll More</a>
+      </div> {% endcomment %}
+    </div>
+
+    <!-- Image with Newsletter Form Side (Back) -->
+    <div class="flip-content image-side">
+      <div class="scroll-less">
+        <a href="#" id="scroll-less-link">Scroll Less</a>
+      </div>
+      <img src="{{ section.settings.image_url | img_url: 'master' }}" alt="Image Description" class="product-image desk_img" width="" height="">
+      <img src="{{ section.settings.image_mob_url | img_url: 'master' }}" alt="Image Description" class="product-image mob_img" width="" height="">
+      <div class="newsletter-form-container">
+        <h2>Subscribe to our Newsletter</h2>
+        <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="contact-form" id="contact_form">
+          <input type="hidden" name="form_type" value="customer" />
+          <input type="hidden" name="utf8" value="✓" />
+          
+          <input type="email" name="contact[email]" placeholder="Enter your email address" class="newsletter-input" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+      <div class="payment_section">
+        <div class="container">
+          <div class="payment_option">
+            {% for block in section.blocks %}
+            <div class="payment_wrap">
+              <a href="{{ block.settings.social_link }}">
+                <img src="{{ block.settings.img_picker | img_url : "original" }}" alt="">
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-more">
+    <a href="#" id="scroll-more-link">Scroll More</a>
+  </div>
+</div>
+
+
+<style>
+
+.video-flip-section {
+  position: relative;
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.flip-container {
+  position: relative;
+  width: 100%;
+  height: auto; /* Adjust height as needed */
+  perspective: 1500px; /* Creates 3D space for flipping */
+}
+
+.flip-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.flip-content video{
+  width: 100%;
+}
+
+.flip-content.image-side img{
+  width: 100%;
+}
+
+.flip-container.flipped .video-side .scroll-more{
+  display: none;
+}
+
+.video-side {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.image-side {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.flipped .video-side {
+  transform: rotateY(180deg);
+}
+
+.flipped .image-side {
+  transform: rotateY(0deg);
+}
+
+.scroll-more {
+  position: fixed; /* Fixed position ensures it stays in the same spot even when scrolling */
+  z-index: 10; /* Ensures it stays on top of video/image */
+  color: #ffffff; /* White text for contrast */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  bottom: 10%; /* Always stays at the bottom */
+  left: 50%; /* Align horizontally in the center */
+  transform: translateX(-50%); /* Center it perfectly */
+}
+
+.scroll-more a{
+  color: #ffffff;
+}
+
+.scroll-less {
+  position: absolute;
+  z-index: 10; /* High z-index to ensure it's on top of image */
+  color: #ffffff;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  top: 20px; /* Stays at the top of the image */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-less a{
+  color: #333333;
+}
+
+.newsletter-form-container {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.8); /* Transparent background */
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-input {
+  width: 60%;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.newsletter-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter-btn:hover {
+  background-color: #555;
+}
+
+.mob_video{
+  display: none;
+}
+.mob_img{
+  display: none;
+}
+
+
+
+.payment_section{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 9;
+}
+
+.payment_section .payment_option{
+  display: flex;
+  align-items: center;
+}
+
+.payment_section .payment_option .payment_wrap{
+  padding: 0px 2px;
+}
+
+.payment_section .payment_option .payment_wrap img{
+  width: 30px;
+  height: 18px;
+}
+
+.video-flip-section.active .scroll-more{
+  display: none;
+}
+
+.video-flip-section .scroll-more{
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .desk_video{
+    display: none;
+  }
+  .mob_video{
+    display: block;
+  }
+  .desk_img{
+    display: none;
+  }
+  .mob_img{
+    display: block;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .flip-container {
+    height: auto; /* Adjust height for tablets */
+  }
+
+  .newsletter-form-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .newsletter-input {
+    width: 55%;
+  }
+
+  .scroll-more, .scroll-less {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flip-container {
+    height: auto; /* Adjust height for mobile */
+  }
+
+  .newsletter-input {
+    width: 80%;
+    margin-bottom: 10px; /* Stack input and button vertically on small screens */
+  }
+
+  .newsletter-btn {
+    width: 80%;
+  }
+
+  .scroll-more, .scroll-less {
+    font-size: 14px;
+  }
+
+  video, img {
+    /* object-fit: cover; */
+    height: auto; /* Ensure video and image cover the height */
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-container {
+    height: auto; /* Further height reduction for very small screens */
+  }
+
+  .newsletter-input, .newsletter-btn {
+    width: 100%; /* Full width for input and button on small screens */
+  }
+
+  .scroll-more, .scroll-less {
+    font-size: 12px;
+  }
+}
+
+
+.scroll-more {
+  position: fixed; /* Fixed position to keep it at the bottom */
+  bottom: 20px;    /* Distance from the bottom */
+  left: 50%;       /* Align to the center horizontally */
+  transform: translateX(-50%); /* Center alignment */
+  z-index: 1000;   /* Ensure it stays on top of other elements */
+}
+
+.scroll-more a {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.6); /* Optional: Add a background for better visibility */
+  color: #fff;        /* White text color */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Optional: Rounded corners */
+  font-size: 16px;    /* Adjust font size as per your preference */
+}
+
+@media (max-width: 768px) {
+  .scroll-more {
+    bottom: 10px;   /* Adjust bottom position for smaller screens */
+  }
+
+  .scroll-more a {
+    font-size: 14px; /* Adjust font size for mobile screens */
+    padding: 8px 16px;
+  }
+}
+
+
+</style>
+
+
+<script>
+
+  document.getElementById('scroll-more-link').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  // Add flipped class to flip container
+  document.querySelector('.flip-container').classList.add('flipped');
+  document.querySelector('.video-flip-section').classList.add('active');
+});
+
+  document.getElementById('scroll-less-link').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  // Remove flipped class to revert back to video
+  document.querySelector('.flip-container').classList.remove('flipped');
+  setTimeout(function() {
+    document.querySelector('.video-flip-section').classList.remove('active');
+  }, 500);
+
+});
+
+</script>
+
+{% comment %} https://community.shopify.com/c/shopify-design/adding-an-email-signup-to-a-text-with-image-section/m-p/1962149 {% endcomment %}
+
+
+{% schema %}
+  {
+    "name": "Video Brand",
+    "settings": [
+      {
+        "type": "video",
+        "id": "video_url",
+        "label": "Video URL"
+      },
+      {
+        "type": "video",
+        "id": "video_mob_url",
+        "label": "Mobile Video"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_url",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mob_url",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "image",
+        "type": "image",
+        "limit": 10,
+        "settings": [
+          {
+            "type": "url",
+            "id": "social_link",
+            "label": "Payment Link"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_picker",
+            "label": "Payment Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video Brand"
+      }
+    ]
+  }
+{% endschema %}

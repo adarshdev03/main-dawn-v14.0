@@ -1,0 +1,24 @@
+<section class="collection_banner">
+    <div class="container">
+        <div class="banner_wrap">
+            {% if collection.metafields.custom.banner_img != blank %}
+                <img src="{{ collection.metafields.custom.banner_img | img_url: 'master' }}" alt="{{ collection.title }}">
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Collection Banner",
+    "settings": [
+
+    ],
+    "presets": [
+        {
+            "name": "Collection Banner"
+        }
+    ]
+}
+{% endschema %}

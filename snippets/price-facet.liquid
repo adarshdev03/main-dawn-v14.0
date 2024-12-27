@@ -1,0 +1,141 @@
+<span class="field-currency">{{ cart.currency.symbol }}</span>
+
+{% comment %} <div class="field">
+  <input
+    class="field__input"
+    name="{{ filter.min_value.param_name }}"
+    id="{{ id_prefix }}{{ filter.label | escape }}-GTE"
+    {%- if filter.min_value.value -%}
+      value="{{ filter.min_value.value | money_without_currency }}"
+    {%- endif -%}
+    type="slider"
+    inputmode="decimal"
+    placeholder="0"
+    data-pattern="\d| |,|\."
+    data-min="0"
+    data-max="{{ filter.range_max | money_without_currency }}"
+  >
+  <label class="field__label" for="{{ id_prefix }}{{ filter.label | escape }}-GTE">
+    {{- 'products.facets.from' | t -}}
+  </label>
+</div>
+
+{%- if filter_type != 'vertical' -%}
+  <span class="field-currency">{{ cart.currency.symbol }}</span>
+{%- endif -%}
+
+<div class="field">
+  <input
+    class="field__input"
+    name="{{ filter.max_value.param_name }}"
+    id="{{ id_prefix }}{{ filter.label | escape }}-LTE"
+    {%- if filter.max_value.value -%}
+      value="{{ filter.max_value.value | money_without_currency }}"
+    {%- endif -%}
+    type="slider"
+    inputmode="decimal"
+    placeholder="{{ filter.range_max | money_without_currency }}"
+    data-pattern="\d| |,|\."
+    data-min="0"
+    data-max="{{ filter.range_max | money_without_currency }}"
+  >
+  <label class="field__label" for="{{ id_prefix }}{{ filter.label | escape }}-LTE">
+    {{- 'products.facets.to' | t -}}
+  </label>
+</div> {% endcomment %}
+
+{% comment %} <div class="price-slider">
+  <input
+    class="price-slider__input"
+    type="range"
+    name="price-min"
+    id="{{ id_prefix }}{{ filter.label | escape }}-GTE"
+    min="0"
+    max="{{ filter.range_max | money_without_currency }}"
+    value="{{ filter.min_value.value | money_without_currency }}"
+    step="5"
+    oninput="updatePriceRange(this)"
+  >
+  <input
+    class="price-slider__input"
+    type="range"
+    name="price-max"
+    id="{{ id_prefix }}{{ filter.label | escape }}-LTE"
+    min="0"
+    max="{{ filter.range_max | money_without_currency }}"
+    value="{{ filter.max_value.value | money_without_currency }}"
+    step="5"
+    oninput="updatePriceRange(this)"
+  >
+  <div class="price-slider__values">
+    <span class="price-slider__min">{{ cart.currency.symbol }}<span id="price-min-display">{{ filter.min_value.value | money_without_currency }}</span></span>
+    <span class="price-slider__max">{{ cart.currency.symbol }}<span id="price-max-display">{{ filter.max_value.value | money_without_currency }}</span></span>
+  </div>
+</div> {% endcomment %}
+
+<div id="price-slider"></div>
+<input type="hidden" id="min-price" name="min_price" value="">
+<input type="hidden" id="max-price" name="max_price" value="">
+
+<script>
+  var slider = document.getElementById('price-slider');
+
+  noUiSlider.create(slider, {
+      start: [0, 1000], // Initial values
+      connect: true,
+      range: {
+          'min': 0,
+          'max': 1000
+      },
+      format: {
+          to: function (value) {
+              return Math.round(value);
+          },
+          from: function (value) {
+              return Number(value);
+          }
+      }
+  });
+
+  var minInput = document.getElementById('min-price');
+  var maxInput = document.getElementById('max-price');
+
+  slider.noUiSlider.on('update', function (values, handle) {
+      if (handle === 0) {
+          minInput.value = values[handle];
+      } else {
+          maxInput.value = values[handle];
+      }
+  });
+
+  slider.noUiSlider.on('change', function () {
+      // Trigger a filter or form submission when the slider value changes
+      // Example:
+      document.forms['collection-filter-form'].submit();
+  });
+</script>
+
+
+{% comment %} <script>
+  console.log('price_range_slider')
+    function updatePriceRange(slider) {
+    var minInput = document.getElementById('{{ id_prefix }}{{ filter.label | escape }}-GTE');
+    var maxInput = document.getElementById('{{ id_prefix }}{{ filter.label | escape }}-LTE');
+
+    var minValue = parseFloat(minInput.value);
+    var maxValue = parseFloat(maxInput.value);
+
+    if (minValue > maxValue) {
+      var temp = minValue;
+      minValue = maxValue;
+      maxValue = temp;
+
+      minInput.value = minValue;
+      maxInput.value = maxValue;
+    }
+
+    document.getElementById('price-min-display').textContent = minValue;
+    document.getElementById('price-max-display').textContent = maxValue;
+  }
+
+</script> {% endcomment %}

@@ -1,0 +1,165 @@
+<div class="video-image-flip-container">
+  <!-- Video Section -->
+  <div class="video-side flip-side">
+    {% comment %} {% if section.settings.video_id != blank %}
+        {{ section.settings.video_id | video_tag:
+            image_size: '1100x',
+            class: "video_main",
+            autoplay: true,
+            controls: none,
+            muted: true,
+            loop:true }}
+    {% endif %} {% endcomment %}
+    <img src="{{ section.settings.back2_img | img_url: 'original' }}" alt="Image Description" class="product-image">
+  </div>
+
+  <!-- Image Section (hidden by default) -->
+  <div class="image-side flip-side">
+    <img src="{{ section.settings.back_img | img_url: 'original' }}" alt="Image Description" class="product-image">
+  </div>
+  <a href="#" class="show-more-link">Show more</a>
+</div>
+
+<style>
+.video-image-flip-container {
+  position: relative;
+  width: 100%;
+  /* max-width: 600px; */
+  margin: 0 auto;
+  perspective: 1000px; /* Enable 3D perspective */
+}
+
+.flip-side {
+  width: 100%;
+  height: auto;
+  backface-visibility: hidden;
+  transition: transform 0.8s ease-in-out; /* Smooth animation */
+  transform-style: preserve-3d;
+}
+
+.video-side, .image-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-side video{
+    width: 100%;
+}
+
+.video-side {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.video-side video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire screen */
+  transform: translate(-50%, -50%); /* Centers the video */
+}
+
+.video-side {
+  z-index: 2;
+}
+
+.image-side {
+  z-index: 1;
+  transform: rotateY(180deg); /* Initially hide the image side */
+}
+
+.flipped .video-side {
+  transform: rotateY(180deg); /* Flip the video side from center */
+  z-index: 1;
+}
+
+.flipped .image-side {
+  transform: rotateY(0); /* Reveal the image side */
+  z-index: 2;
+}
+
+.image-side{
+  width: 100vw;
+  height: 100vh;
+}
+
+.image-side img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.show-more-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+</style>
+
+<script>
+//     document.addEventListener("DOMContentLoaded", function () {
+//   const flipContainer = document.querySelector(".video-image-flip-container");
+//   const showMoreLink = document.querySelector(".show-more-link");
+
+//   showMoreLink.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     flipContainer.classList.toggle("flipped");
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const flipContainer = document.querySelector(".video-image-flip-container");
+  const showMoreLink = document.querySelector(".show-more-link");
+
+  showMoreLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    flipContainer.classList.toggle("flipped");
+  });
+});
+
+</script>
+
+
+{% schema %}
+{
+    "name": "Video Images",
+    "settings": [
+        {
+            "type": "video",
+            "id": "video_id",
+            "label": "Add Video"
+        },
+        {
+            "type": "image_picker",
+            "id": "back_img",
+            "label": "Add Video Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "back2_img",
+            "label": "Add Video Image"
+        }
+        
+        ],
+    "presets": [
+        {
+            "name": "Video Images"
+        }
+    ]
+}
+{% endschema %}

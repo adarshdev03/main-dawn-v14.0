@@ -1,0 +1,64 @@
+<section class="marque_text marquee">
+    <marquee-text speed="0.5" direction="right" class="marque_wrap marquee--inner{% if section.settings.marque_text == 'left' %}-left{% elsif section.settings.marque_text == 'right' %}-right{% endif %}">
+        {% for block in section.blocks %}
+            <div class="marque_main">
+                <img src="{{ block.settings.marque_img |  img_url: 'master' }}" alt="">
+                <a href="{{ block.settings.marque_url }}"><h5 class="marque_title">{{ block.settings.marque_text }}</h5></a>
+            </div>
+        {% endfor %}
+    </marquee-text>
+</section>
+
+
+
+{% schema %}
+{
+    "name": "Marque Text",
+    "settings": [
+        {
+        "type": "select",
+        "id": "marque_text",
+        "label": "Select Option For Marquee",
+        "default": "left",
+            "options": [
+                {
+                "value": "left",
+                "label": "Left"
+                },
+                {
+                "value": "right",
+                "label": "Right"
+                }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Marque Block",
+            "type": "text",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "marque_img",
+                    "label": "Marque Image"
+                },
+                {
+                    "type": "url",
+                    "id": "marque_url",
+                    "label": "Marque URL"
+                },
+                {
+                    "type": "text",
+                    "id": "marque_text",
+                    "label": "Marque Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Marque Text"
+        }
+    ]
+}
+{% endschema %}

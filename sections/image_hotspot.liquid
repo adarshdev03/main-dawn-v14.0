@@ -1,0 +1,105 @@
+<section class="product_hotspot_section">
+    <div class="container page-width-col">
+        <div class="product_hs_wrap">
+            <div class="product_hs_left">
+                <div class="product_img">
+                    <img src="{{ section.settings.product_img |  img_url: "master"  }}" alt="Product Img">
+                    {%- for block in section.blocks -%}
+                        <div class="scroll_dot_wrap"  data-slide="{{ forloop.index }}" style="left:{{ block.settings.dot_left }}%; top:{{ block.settings.dot_top }}%;">
+                            <span class="scroll_dot"></span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="product_hs_rigt">
+                <div class="product_slider">
+                    <div class="tabs__content tabs-content">
+                        <div class="products_slide">
+                            {% for block in section.blocks %}
+                            {%- assign product = all_products[block.settings.product_dots] -%}
+                                <div data-slide="{{ forloop.index }}">
+                                    {% render 'card-product',
+                                    card_product: block.settings.product_dots,
+                                    media_aspect_ratio: 'adapt',
+                                    extend_height: true,
+                                    placeholder_image: placeholder_image
+                                    %}
+                                </div>   
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $(".scroll_dot_wrap").click(function(e){
+            e.preventDefault();
+            var slideIndex = $(this).data('slide')- 1;
+            console.log(slideIndex,"slideindex");
+            $('.products_slide').slick('slickGoTo', parseInt(slideIndex), false);
+        });
+        $('.products_slide').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            dots: false,
+        });
+    });
+</script>
+
+{% schema %}
+    {
+      "name": "Image Hotspot Section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_img",
+          "label": "Product Main Image"
+        }
+        ],
+        "blocks": [
+            {
+                "type": "dota",
+                "name": "Product Dots",
+                "limit": 3,
+                "settings": [
+                    {
+                        "type": "product",
+                        "id" : "product_dots",
+                        "label" : "Product For Dots"
+                    },
+                    {
+                        "type": "range",
+                        "id": "dot_left",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Product Dot left Slider",
+                        "default": 1
+                    },
+                    {
+                        "type": "range",
+                        "id": "dot_top",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Product Dot Top Slider",
+                        "default": 1
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+            "name": "Image Hotspot Section"
+            }
+        ]
+    }
+{% endschema %}

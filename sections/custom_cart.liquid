@@ -1,0 +1,595 @@
+<!-- /templates/cart.liquid -->
+{% comment %}
+
+For info on test orders:
+- General http://docs.shopify.com/manual/your-store/orders/test-orders
+- Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+{% comment %} <div class="wrap-bread-crumb breadcrumb_collection2">
+  <div class=" bg-breadcrumb" style="background-image : url({% if section.settings.bg_breadcrumb != blank  %}{{section.settings.bg_breadcrumb | img_url : 'master'}} {% else %}//placehold.it/1920x510 {% endif %})">
+    <div class="container container-v2">
+      <div class="title-page">
+
+        <h2 class="">{{section.settings.page_title}}</h2>
+
+      </div>
+      {% include 'breadcrumb' %}
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<div class="main_cart_section">
+    <div class="wrap-bread-crumb breadcrumb_collection2">
+        <div class="container container-v1">
+            {% include 'breadcrumb' %}
+        </div>
+    </div>
+    <div class="main_title">
+        <h2>{{ section.settings.main_title }}</h2>
+    </div>
+    <div class="main_cart container container-v1">
+        <section class="contact_section">
+            <div class="container">
+                <div class="contact_form_div">
+                    <div class="contact_form">
+                        <div class="contact_form_details">
+                            <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+                                {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+                                {%- if form.posted_successfully? -%}
+                                    {% comment %} <div
+                                    class="form-status form-status-list form__message"
+                                    tabindex="-1"
+                                    autofocus>
+                                    <svg
+                                        aria-hidden="true"
+                                        focusable="false"
+                                        role="presentation"
+                                        class="icon icon-success"
+                                        viewBox="0 0 13 13">
+                                        <path
+                                        d="M6.5 12.35C9.73087 12.35 12.35 9.73086 12.35 6.5C12.35 3.26913 9.73087 0.65 6.5 0.65C3.26913 0.65 0.65 3.26913 0.65 6.5C0.65 9.73086 3.26913 12.35 6.5 12.35Z"
+                                        fill="#428445"
+                                        stroke="white"
+                                        stroke-width="0.7" />
+                                        <path d="M5.53271 8.66357L9.25213 4.68197" stroke="white" />
+                                        <path d="M4.10645 6.7688L6.13766 8.62553" stroke="white">
+                                    </svg>
+                                    Thanks for contacting us. We'll get back to you as soon as possible.
+                                    </div> {% endcomment %}
+                                    <div id="BlockUIConfirm" class="BlockUIConfirm">
+                                        <div class="blockui-mask"></div>
+                                        <div class="RowDialogBody">
+                                            <div class="confirm-header row-dialog-hdr-success">
+                                                Confirm Submission
+                                            </div>
+                                            <div class="confirm-body">
+                                                Thanks for contacting us. We'll get back to you as soon as possible.
+                                            </div>
+                                            {% comment %} <div class="confirm-btn-panel pull-right">
+                                                <div class="btn-holder pull-right">
+                                                    <a href="{{ section.settings.btn_link }}"><button class="btn_success">Click</button></a>
+                                                    <button onclick="$('#BlockUIConfirm').hide();">Cancel</button>
+                                                </div>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    {% comment %} <style>body{display:none!important!}</style>
+                                    <script>window.location.replace("{{ section.settings.page_url }}");</script> {% endcomment %}
+
+                                    <style>body{display:none!important!}</style>
+                                    <script>
+                                        setInterval(function()
+                                        {window.location.replace("{{ section.settings.page_url }}");}
+                                        , 3000);
+                                    </script>
+
+                                {%- elsif form.errors -%}
+                                    <div class="form__message">
+                                    <h2
+                                        class="form-status caption-large text-body"
+                                        role="alert"
+                                        tabindex="-1"
+                                        autofocus>
+                                        <svg
+                                        aria-hidden="true"
+                                        focusable="false"
+                                        role="presentation"
+                                        class="icon icon-error"
+                                        viewBox="0 0 13 13">
+                                        <circle
+                                            cx="6.5"
+                                            cy="6.50049"
+                                            r="5.5"
+                                            stroke="white"
+                                            stroke-width="2" />
+                                        <circle
+                                            cx="6.5"
+                                            cy="6.5"
+                                            r="5.5"
+                                            fill="#EB001B"
+                                            stroke="#EB001B"
+                                            stroke-width="0.7" />
+                                        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white" />
+                                        <path
+                                            d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z"
+                                            fill="white"
+                                            stroke="#EB001B"
+                                            stroke-width="0.7">
+                                        </svg>
+                                        Please adjust the following:</h2>
+                                    </div>
+                                    <ul class="form-status-list caption-large" role="list">
+                                    <li>
+                                        <a href="#ContactForm-email" class="link normal_text">
+                                        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+                                        </a>
+                                    </li>
+                                    </ul>
+                                {%- endif -%}
+
+
+                                <div class="d-none">
+                                    <input type="textarea"
+                                    class="w-100 font-f-p input_main"
+                                    id="ContactForm-Title"
+                                    name="contact[Product Details]"
+                                    value="{% for item in cart.items -%} {% if item.title %}Product :- {{ item.title | escape }} | Quantity :- {{ item.quantity }} || {% continue %} {% endif %} {%- endfor %}">
+                                </div>
+
+                                {% for item in cart.items %}
+
+                                    {% comment %} <div class="d-none">
+                                        <div class="input_100 contact_input">
+                                            <div class="input_title w-100">Product Title</div>
+                                            <input type="text"
+                                            class="w-100 font-f-p input_main"
+                                            id="ContactForm-Title"
+                                            name="contact[Product Title]"
+                                            value="{{ item.title | escape }}">
+                                        </div>
+                                    </div>
+                                    <div class="d-none">
+                                        <div class="input_100 contact_input">
+                                            <div class="input_title w-100">Product Quantity</div>
+                                            <input type="text"
+                                            class="w-100 font-f-p input_main"
+                                            type="text"
+                                            id="ContactForm-quantity"
+                                            name="contact[Product Quantity]"
+                                            value="{{ item.quantity }}">
+                                        </div>
+                                    </div> {% endcomment %}
+
+                                    {% comment %} <tr class="cart_item">
+                                    
+                                    <td data-label="Product Name" class="product-thumbnail">
+                                        <a href="{{ item.url }}"><img  src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}"/></a>					 
+                                    </td>
+                                    <td class="product-name-thumb" data-title="Product">
+                                        
+                                        <a href="{{ item.url }}">{{ item.product.title }}</a>	
+                                        {% unless item.variant.title contains 'Default' %}
+                                        <small style="display: block; color: #959595;">{{ item.variant.title }}</small>
+                                        {% endunless %}
+                                        {% if settings.cart_vendor_enable %}
+                                        <p>{{ item.vendor }}</p>
+                                        {% endif %}           
+                                        
+                                    </td>
+                                    
+                                    <td data-label="Quantity" class="product-quantity" data-title="Quantity">
+                                        <input type="number" value="{{ item.quantity }}" min="0">
+                                    </td>
+    
+                                    
+                                    <td  class="product-remove">
+                                        <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="ti-close" aria-hidden="true"></i></a>
+                                    </td>
+                                    </tr> {% endcomment %}
+                                    {% endfor %} 
+
+
+
+
+                                {% comment %} <div class="d-none">
+                                    <div class="input_100 contact_input">
+                                        <div class="input_title w-100">Product Title</div>
+                                        <input
+                                        class="w-100 font-f-p input_main"
+                                        type="text"
+                                        id="ContactForm-Title"
+                                        name="contact[Product Title]"
+                                        value="">
+                                    </div>
+                                </div>
+                                <div class="d-none">
+                                    <div class="input_100 contact_input">
+                                        <div class="input_title w-100">Product Quantity</div>
+                                        <input
+                                        class="w-100 font-f-p input_main"
+                                        type="text"
+                                        id="ContactForm-quantity"
+                                        name="contact[Product Quantity]"
+                                        value="">
+                                    </div>
+                                </div> {% endcomment %}
+                                <div class=" w-100">
+                                    <div class=" input_100 contact_input">
+                                    <div class="input_title w-100">Name</div>
+                                    <input
+                                    class="w-100 font-f-p input_main"
+                                    type="text"
+                                    id="Contact-name"
+                                    name="contact[Name]"
+                                    value=""
+                                    placeholder="Name"
+                                    required>
+                                    </div>
+                                </div>
+                                <div class=" w-100">
+                                    <div class=" input_100 contact_input">
+                                    <div class="input_title w-100">Country</div>
+                                    {% comment %} <input
+                                    class="w-100 font-f-p input_main"
+                                    type="text"
+                                    id="Contact-country"
+                                    name="contact[Country]"
+                                    value=""
+                                    placeholder="Country"
+                                    required> {% endcomment %}
+                                    <select name="contact[Country]" id="Contact-country" class="input_title country_input" required>
+                                        <option value="" selected> -- Select Your Country -- </option>
+                                        {% for country in localization.available_countries -%}
+                                          <option value="{{ country }}">
+                                            {{ country }}
+                                          </option>
+                                        {%- endfor -%}
+                                    </select>
+                                    </div>
+                                </div>
+                                {%- if form.errors contains 'email' -%}
+                                    <small class="contact__field-error" id="ContactForm-email-error">
+                                    <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                                    <span class="form__message">Email is invalid</span>
+                                    </small>
+                                {%- endif -%}
+                                <div class=" w-100">
+                                    <div class=" input_100 contact_input">
+                                        <div class="input_title w-100">Email</div>
+                                        <input
+                                        autocomplete="email"
+                                        type="email"
+                                        id="Contact-email"
+                                        class="w-100 font-f-p input_main"
+                                        name="contact[email]"
+                                        spellcheck="false"
+                                        autocapitalize="off"
+                                        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                                        aria-required="true"
+                                        {% if form.errors contains 'email' %}aria-invalid="true"aria-describedby="ContactForm-email-error"{% endif %}placeholder="Email" required>
+                                    </div>
+                                    {% comment %} <div class="input_50 contact_input">
+                                    <input type="tel" id="ContactForm-phone" class="w-100 font-f-noto" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="Phone number">
+                                    </div> {% endcomment %}
+                                </div>
+                                <div class=" w-100">
+                                    <div class=" input_100 contact_input">
+                                    <div class="input_title w-100">Phone</div>
+                                    <input
+                                    class="w-100 font-f-p input_main"
+                                    type="tel"
+                                    id="Contact-phone"
+                                    name="contact[Phone]"
+                                    value=""
+                                    placeholder="Phone"
+                                    required>
+                                    {% comment %} <select>
+                                        {%- for country in localization.available_countries -%}
+                                        <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                                        {{ country.iso_code }} ({{ country.phone_code }})
+                                        </option>
+                                        {%- endfor -%}
+                                    </select> {% endcomment %}
+                                    </div>
+                                </div>
+                                <div class="w-100">
+                                    <div class="input_100 contact_input">
+                                    <div class="input_title w-100">Message <span>(Optional)</span></div>
+                                    <textarea class="form-control" placeholder="message" rows="6" name="contact[Message]"></textarea>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="contact_form_group w-100">               
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" placeholder="message" rows="6" name="Message" required></textarea> 
+                                </div> {% endcomment %}
+                                <div class="form_submit_button contact__button">
+                                    <button type="submit" class="submit_btn font-f-noto" onclick="ConfirmForm();">
+                                    Submit
+                                    </button>
+                                </div>
+                                {%- endform -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="custom_cart_wrap">
+            <section class="page-cart custom_cart">
+                <div class="content-pages">
+                    <div class="container">
+                    <div class="content-about content-cart-page">
+                        <div style="display: none;">
+                            <p id="custName"></p>
+                            <p id="custCty"></p>
+                            <p id="custMail"></p>
+                            <p id="custPhn"></p>
+                        </div>
+                        {% if cart.item_count > 0 %}
+                        {% comment %} <form action="/cart" method="post" novalidate> {% endcomment %}
+                        <div class="table-responsive">
+                            <table class="shop_table table--responsive cart table">
+                            <thead>
+                                <tr class="cart-title">
+
+                                <th colspan="2" class="product-thumbnail"> {{ 'cart.label.product' | t }}</th>
+                                <th class="product-quantity">{{ 'cart.label.quantity' | t }}</th>
+                                <th class="product-price" style="vertical-align: top;">{{ 'cart.label.price' | t }}</th>
+                                <th class="product-subtotal">{{ 'cart.label.total' | t }}</th>
+                                {% comment %} <th class="product-remove">&nbsp;</th> {% endcomment %}
+                                </tr>
+                            </thead>
+
+                            {% if cart.item_count > 0 %}
+                            {% comment %} <form action="/cart" method="post" novalidate> {% endcomment %}
+                            <tbody>
+                                {% for item in cart.items %}
+                                <tr class="cart_item">
+
+                                <td data-label="Product Name" class="product-thumbnail">
+                                    <a href="{{ item.url }}"><img  src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}"/></a>					 
+                                </td>
+                                <td class="product-name-thumb" data-title="Product">
+
+                                    <a href="{{ item.url }}">{{ item.product.title }}</a>	
+                                    {% comment %} {% unless item.variant.title contains 'Default' %}
+                                    <small style="display: block; color: #1e1e1e; margin-top:5px; font-weight: 600;">{{ item.variant.title }}</small>
+                                    {% endunless %}
+                                    {% if settings.cart_vendor_enable %}
+                                    <p>{{ item.vendor }}</p>
+                                    {% endif %} {% endcomment %}
+                                    <p class="cart_varaint">Colour : {{ item.variant.option1 }}</p>
+                                    <p class="cart_varaint">Size : {{ item.variant.option2 }}</p>
+                                    <p class="cart_varaint">Specification : {{ item.variant.option3 }}</p>
+
+                                </td>
+
+                                <td data-label="Quantity" class="product-quantity" data-title="Quantity">
+                                    <input type="number" value="{{ item.quantity }}" min="0">
+                                </td>
+                                <td data-label="Product Price" class="product-price" data-title="Price">
+                                    <span class="amount">{{ item.price | money }}</span>					
+                                </td>
+                                <td data-label="Sub Total" class="product-subtotal" data-title="Total">
+                                    <span class="amount">{{ item.line_price | money }}</span>	
+                                </td>
+
+                                {% comment %} <td  class="product-remove">
+                                    <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="ti-close" aria-hidden="true"></i></a>
+                                </td> {% endcomment %}
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                            {% comment %} </form> {% endcomment %}
+                            {% endif %}
+                            </table>
+                        </div>
+
+                        <div class="cart_totals"> 
+                            <div class="cart-check">
+                                {% comment %} <h2 class="cart-title">{{'cart.label.cart_total' | t}}</h2> {% endcomment %}
+                                <table class="total-checkout">
+                                    <tbody>
+                                    <tr style="display: table-row;
+                                    vertical-align: inherit;
+                                    border-color: inherit;">
+                                        <th class="cart-label"><span>Subtotal</span></th>
+                                        <td class="cart-amount"><span ><span class="amount">{{ cart.total_price | money }}</span> </span></td>
+                                    </tr>
+                                    <tr style="display: table-row;
+                                    vertical-align: inherit;
+                                    border-color: inherit;">
+                                        <th class="cart-label"><span >Shipping</span></th>
+                                        <td class="cart-amount"><span ><strong><span class="amount">Free</span></strong> </span></td>
+                                    </tr>
+                                    <tr style="display: table-row;
+                                    vertical-align: inherit;
+                                    border-color: inherit;">
+                                        <th class="cart-label"><strong><span >{{ 'cart.label.total' | t }}</span></strong></th>
+                                        <td class="cart-amount"><span ><strong><span class="amount">{{ cart.total_price | money }}</span></strong> </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% comment %} </form> {% endcomment %}
+                        {% else %}
+                        {% comment %}
+                        The cart is empty
+                        {% endcomment %}
+                        <p>{{ 'cart.general.empty' | t }}</p>
+                        <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+                        {% endif %}
+                    </div>	
+                    </div>
+                </div>
+                <!-- End Content Pages -->
+            </section>
+            <div class="Product_details_faq">
+                <div class="product_page_faq">
+                    <div class="product_faq_tab">
+                    {% if section.settings.faq_qus1 != blank %}
+                        <div class="FAQ_item">
+                        <div class="question font-f-p">
+                            {{ section.settings.faq_qus1 }}
+                        </div>
+                        <div class="answercont">
+                            <div class="answer font-f-p">
+                            <P class="m-0">{{ section.settings.faq_ans1 }}</P>
+                            </div>
+                        </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="product_faq_tab">
+                    {% if section.settings.faq_qus2 != blank %}
+                        <div class="FAQ_item">
+                        <div class="question font-f-p">
+                            {{ section.settings.faq_qus2 }}
+                        </div>
+                        <div class="answercont">
+                            <div class="answer font-f-p">
+                            <P class="m-0">{{ section.settings.faq_ans2 }}</P>
+                            </div>
+                        </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="product_faq_tab">
+                        {% if section.settings.faq_qus3 != blank %}
+                            <div class="FAQ_item">
+                            <div class="question font-f-p">
+                                {{ section.settings.faq_qus3 }}
+                            </div>
+                            <div class="answercont">
+                                <div class="answer font-f-p">
+                                <P class="m-0">{{ section.settings.faq_ans3 }}</P>
+                                </div>
+                            </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    .qty_minus{
+        display: none;
+    }
+    .qty_plus{
+        display: none;
+    }
+    .js-qty__num{
+        padding: 0px !important;
+    }
+</style>
+
+
+<script>
+
+  let question = document.querySelectorAll('.question');
+
+  question.forEach((question) => {
+    question.addEventListener('click', (e) => {
+      const active = document.querySelector('.question.active');
+      const parent = document.querySelector('.FAQ_item.item_active');
+      let that = e.currentTarget;
+      const parents = that.closest('.FAQ_item');
+      if (active && active !== question) {
+        active.classList.toggle('active');
+        active.nextElementSibling.style.maxHeight = 0;
+      }
+      if (parent && parent !== parents) {
+        parent.classList.toggle('item_active');
+      }
+      question.classList.toggle('active');
+      const answer = question.nextElementSibling;
+      if (question.classList.contains('active')) {
+        answer.style.maxHeight = '100%';
+        parents.classList.add('item_active');
+      } else {
+        answer.style.maxHeight = 0;
+        parents.classList.remove('item_active');
+      }
+    });
+  });
+
+  var localQty = localStorage.getItem("Customer-Name");
+  {% comment %} console.log("localQty",localQty); {% endcomment %}
+  document.getElementById("custName").innerHTML = localQty;
+
+  var localAdd = localStorage.getItem("Customer-Address");
+  {% comment %} console.log("localAdd",localAdd); {% endcomment %}
+  document.getElementById("custCty").innerHTML = localAdd;
+
+  var localMail = localStorage.getItem("Customer-Email");
+  {% comment %} console.log("localMail",localMail); {% endcomment %}
+  document.getElementById("custMail").innerHTML = localMail;
+
+  var localPhn = localStorage.getItem("Customer-PhoneNo");
+  {% comment %} console.log("localPhn",localPhn); {% endcomment %}
+  document.getElementById("custPhn").innerHTML = localPhn;
+</script>
+
+
+{% schema %}
+    {
+      "name": "Custom Cart",
+      "settings": [
+            {
+                "type": "text",
+                "id": "main_title",
+                "label": "Page Title"
+            },           
+            {
+                "type" : "url",
+                "id": "page_url",
+                "label" : "Add Custom Link"
+            },
+            {
+                "type" : "text",
+                "id": "faq_qus1",
+                "label" : "Add Faq Question1"
+            },
+            {
+                "type" : "textarea",
+                "id": "faq_ans1",
+                "label" : "Add Faq Answer1"
+            },
+            {
+                "type" : "text",
+                "id": "faq_qus2",
+                "label" : "Add Faq Question2"
+            },
+            {
+                "type" : "textarea",
+                "id": "faq_ans2",
+                "label" : "Add Faq Answer2"
+            },
+            {
+                "type" : "text",
+                "id": "faq_qus3",
+                "label" : "Add Faq Question3"
+            },
+            {
+                "type" : "textarea",
+                "id": "faq_ans3",
+                "label" : "Add Faq Answer3"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Custom Cart"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,65 @@
+<section class="video_section">
+    <div class="container">
+        <div class="video_wrap">
+            {% if section.settings.video_id != blank %}
+                {{ section.settings.video_id | video_tag:
+                    image_size: '1100x',
+                    class: "video_main",
+                    autoplay: true,
+                    controls: none,
+                    muted: true,
+                    loop:true }}
+            {% endif %}
+            <div class="video_text_wrap">
+                <p class="video_cap m-0">{{ section.settings.video_desc }}</p>
+                <h5 class="video_title m-0">{{ section.settings.video_title }}</h5>
+                <div class="banner__buttons"><a href="{{ section.settings.video_url }}" class="button button--secondary">{{ section.settings.video_btn }}</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ 
+{% schema %}
+{
+    "name": "Video With Text",
+    "settings": [
+        {
+            "type": "video",
+            "id": "video_id",
+            "label": "Add Video"
+        },
+        {
+            "type": "image_picker",
+            "id": "video_img",
+            "label": "Add Video Image"
+        },
+        {
+            "type": "text",
+            "id": "video_desc",
+            "label": "Add Video Caption"
+        },
+        {
+            "type": "text",
+            "id": "video_title",
+            "label": "Add Video Title"
+        },
+        {
+            "type": "url",
+            "id": "video_url",
+            "label": "Add Video Button URL"
+        },
+        {
+            "type": "text",
+            "id": "video_btn",
+            "label": "Add Video Button Lable"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Video With Text"
+        }
+    ]
+}
+{% endschema %}
